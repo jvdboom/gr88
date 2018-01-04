@@ -1,0 +1,45 @@
+<h1>Configuration Settings Sample</h1>
+<p>
+  {{this.product | json}}
+</p>
+
+<div *ngIf="product">
+  <table>
+    <tbody>
+      <tr>
+        <td>Product Name:</td>
+        <td>
+          <input [(ngModel)]="this.product.productName" />
+        </td>
+      </tr>
+      <tr>
+        <td>Introduction Date:</td>
+        <td>
+            <input 
+            [(ngModel)]="this.product.introductionDate"
+            pInputText>
+        </td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>
+            <input 
+            [(ngModel)]="this.product.price"
+            pInputText>
+        </td>
+      </tr>
+      <tr>
+        <td>URL:</td>
+        <td>
+            <input 
+            [(ngModel)]="this.product.url"
+            pInputText>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+
+<button pButton type="button" (click)="saveSettings()" label="saveSettings"></button>
+<button pButton type="button" (click)="deleteSettings()" label="deleteSettings"></button>
+
