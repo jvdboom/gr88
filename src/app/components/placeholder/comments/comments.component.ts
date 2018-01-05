@@ -14,6 +14,7 @@ export class CommentsComponent implements OnInit {
 
   public comments$: Observable<Comment[]>;
   public events: any[] = [];
+  public testing: string = "testing";
 
   selectedComment: Comment;
   comment: Comment;
@@ -84,6 +85,10 @@ export class CommentsComponent implements OnInit {
 
     this.baseForm.valueChanges
       .subscribe(data => this.subcribeToFormChanges(data));
+  }
+
+  onclick(){
+    this.testing = "hallooo";
   }
 
   subcribeToFormChanges(data?: any): void {
