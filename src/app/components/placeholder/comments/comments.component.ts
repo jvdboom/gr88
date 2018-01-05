@@ -3,7 +3,7 @@ import { JsonPlaceholderService } from "../../../shared/json-placeholder.service
 import { Observable } from "rxjs/Observable";
 
 import { Comment } from "../../../models/comment";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-comments",
@@ -13,6 +13,8 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 export class CommentsComponent implements OnInit {
 
   public comments$: Observable<Comment[]>;
+  public events: any[] = [];
+
   selectedComment: Comment;
   comment: Comment;
 
@@ -27,20 +29,20 @@ export class CommentsComponent implements OnInit {
   };
 
   validationMessages = {
-    "Name": {
+    "id": {
       "required": "Name is required.",
       "minlength": "Name must be at least 2 characters long.",
       "maxlength": "Name cannot be more than 50 characters long."
     },
-    "CustomerNumber": {
+    "postId": {
       "required": "CustomberNumber is required.",
       "minlength": "CustomberNumber must be at least 2 characters long.",
       "maxlength": "CustomberNumber cannot be more than 15 characters long."
     },
-    "CountryCodeID": {
+    "name": {
       "required": "Country is required."
     },
-    "Active": {
+    "email": {
       "required": "Active is required."
     }
   };
@@ -49,10 +51,13 @@ export class CommentsComponent implements OnInit {
     private baseFormBuilder: FormBuilder) {
     this.comment = new Comment();
     this.comments$ = jsonPlaceholderService.getRows("comment");
+    this.initializeForm();
+    // this.baseForm.valueChanges
+    // .subscribe(data => this.subcribeToFormChanges(data));
   }
 
   ngOnInit() {
-    this.initializeForm();
+
   }
 
   onRowSelect(event: any) {
@@ -62,7 +67,7 @@ export class CommentsComponent implements OnInit {
 
   initializeForm() {
     this.baseForm = this.baseFormBuilder.group({
-      "id": this.comment.id,
+      "id": [this.comment.id, [Validators.required, Validators.minLength(1)]],
       "postId": this.comment.postId,
       "name": this.comment.name,
       "email": this.comment.email,
@@ -76,5 +81,37 @@ export class CommentsComponent implements OnInit {
       // "CosmosWorkflowID": [this.cSystemTaskDefinition.CosmosWorkflowID, Validators.required],
       // "Active": [this.cSystemTaskDefinition.Active]
     });
+
+    this.baseForm.valueChanges
+      .subscribe(data => this.subcribeToFormChanges(data));
+  }
+
+  subcribeToFormChanges(data?: any): void {
+    // Use this for debugging
+    const myFormStatusChanges$ = this.baseForm.statusChanges;
+    const myFormValueChanges$ = this.baseForm.valueChanges;
+
+    myFormStatusChanges$.subscribe(x => this.events.push({ event: "STATUS_CHANGED", object: x }));
+    myFormValueChanges$.subscribe(x => this.events.push({ event: "VALUE_CHANGED", object: x }));
+
+    if (!this.baseForm) {
+      return;
+    }
+
+    const form: FormGroup = this.baseForm;
+
+    for (const field of Object.keys(this.formErrors)) {
+      // clear previous error message (if any)
+      this.formErrors[field] = "";
+      const control = form.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        const messages: any = this.validationMessages[field];
+        for (const key of Object.keys(control.errors)) {
+          this.formErrors[field] += messages[key] + " ";
+        }
+      }
+    }
   }
 }
+
