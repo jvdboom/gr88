@@ -1,0 +1,115 @@
+<div class="ui-g">
+  <!-- Master  -->
+  <div class="ui-g-6">
+      <p-panel >
+          <p-header>
+              Master 
+          </p-header>
+          <p-dataTable
+            [value]="this.comments$ | async"
+            [rows]="10" 
+            [paginator]="(this.comments$ | async)?.length > 10 ? true : false" 
+            [pageLinks]="3" 
+            [rowsPerPageOptions]="[5,10,20]"
+            selectionMode="single" 
+            [(selection)]="selectedComment"
+            (onRowSelect)="onRowSelect($event)">
+              <p-column field="postId" header="postId"></p-column>
+              <p-column field="id" header="id"></p-column>
+              <p-column field="name" header="name"></p-column>
+              <p-column field="email" header="email"></p-column>
+              <ng-template pTemplate="paginatorLeft">
+                comments
+                  <!-- <button type="button" pButton icon="fa-refresh"></button> -->
+              </ng-template>
+              <ng-template pTemplate="paginatorRight">
+                  <!-- <button type="button" pButton icon="fa-cloud-upload"></button> -->
+                  {{ (this.comments$ | async)?.length }}
+              </ng-template>
+          </p-dataTable>
+          <p-footer>
+            this.selectedComment: {{ this.selectedComment|json }}<br/>
+            this.comment: {{ this.comment|json }}<br/>
+          </p-footer>
+      </p-panel>
+  </div>
+  <!-- Detail -->
+  <div class="ui-g-6">
+      <p-panel >
+          <p-header>
+              Detail
+          </p-header>
+          <form *ngIf="true" [formGroup]="this.baseForm">
+              <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+                  <div class="ui-grid-row">
+                      <div class="ui-grid-col-2">
+                          <label>id:</label>
+                      </div>
+                      <div class="ui-grid-col-6">
+                          <input type="text" pInputText id="Name" formControlName="id">
+                      </div>
+                      <div *ngIf="formErrors.Name" class="ui-grid-col-4">
+                          {{ formErrors.id }}
+                      </div>
+                  </div>
+
+                  <div class="ui-grid-row">
+                      <div class="ui-grid-col-2">
+                          <label>postId:</label>
+                      </div>
+                      <div class="ui-grid-col-6">
+                          <input type="text" pInputText id="postId" formControlName="postId" >
+                      </div>
+                      <div *ngIf="formErrors.Name" class="ui-grid-col-4">
+                          {{ formErrors.postId }}
+                      </div>
+                  </div>
+
+                  <div class="ui-grid-row">
+                      <div class="ui-grid-col-2">
+                          <label>name:</label>
+                      </div>
+                      <div class="ui-grid-col-6">
+                          <input type="text" pInputText id="name" formControlName="name" >
+                      </div>
+                      <div *ngIf="formErrors.Name" class="ui-grid-col-4">
+                          {{ formErrors.name }}
+                      </div>
+                  </div>
+
+                  <div class="ui-grid-row">
+                      <div class="ui-grid-col-2">
+                          <label>email:</label>
+                      </div>
+                      <div class="ui-grid-col-6">
+                          <input type="text" pInputText id="email" formControlName="email" >
+                      </div>
+                      <div *ngIf="formErrors.email" class="ui-grid-col-4">
+                          {{ formErrors.email }}
+                      </div>
+                  </div>
+
+                  <div class="ui-grid-row">
+                      <div class="ui-grid-col-2">
+                          <label>body:</label>
+                      </div>
+                      <div class="ui-grid-col-6">
+                          <!-- <input type="text" pInputText id="body" formControlName="body" > -->
+                          <textarea pInputTextarea id="body" formControlName="body">
+
+                          </textarea>
+                      </div>
+                      <div *ngIf="formErrors.Name" class="ui-grid-col-4">
+                          {{ formErrors.body }}
+                      </div>
+                  </div>
+
+              </div>
+          </form>
+          <p-footer>
+              this.formErrors: {{ formErrors | json }}
+          </p-footer>
+      </p-panel>
+
+  </div>
+</div>
