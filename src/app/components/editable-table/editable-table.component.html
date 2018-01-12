@@ -1,0 +1,157 @@
+
+
+<div class="ui-g">
+  <!-- Master  -->
+  <div class="ui-g-12">
+        <h3>Boolean - {{checked}}</h3>
+        <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+      <p-panel >
+
+        <p-header>
+        </p-header>
+
+        <p-dataTable [value]="cars" 
+        (onRowClick)="onRowClick($event)"
+        (onRowSelect)="onRowSelect($event)"    
+        (onRowUnselect)="onRowUnselect($event)"
+        [rows]="2"
+        [(selection)]="selectedEditableCar" 
+        [editable]="true"
+        [paginator]="true" 
+        [pageLinks]="3"
+        [rowsPerPageOptions]="[5,10,20]">
+                <p-column field="vin" header="Vin" [editable]="true"></p-column>
+                <p-column field="year" header="Year" [editable]="true"></p-column>
+                <p-column field="brand" header="Brand" [editable]="true">
+                    <ng-template let-col let-car="rowData" pTemplate="editor">
+                        <p-dropdown [(ngModel)]="car[col.field]" [options]="brands" [autoWidth]="false" [style]="{'width':'100%'}" required="true"  appendTo="body"></p-dropdown>
+                    </ng-template>
+                </p-column>
+                <p-column field="color" header="Color" [editable]="true"></p-column>
+                <p-column field="saleDate" header="Sale Date" [editable]="true" [style]=" {'overflow':'visible' }">
+                    <ng-template let-col let-car="rowData" pTemplate="body">
+                         {{car[col.field]|date }}
+                    </ng-template>
+                    <ng-template let-col let-car="rowData" pTemplate="editor">
+                        <p-calendar [(ngModel)]="car[col.field]" appendTo="body"></p-calendar>
+                    </ng-template>
+                </p-column>
+                <p-column field="active" header="Active001" [editable]="true">
+                        <ng-template let-col let-car="rowData" pTemplate="body">
+                            <i *ngIf="car.active==true" class="fa fa-check-square-o"></i>
+                            <i *ngIf="car.active==false" class="fa fa-square-o"></i>
+                        </ng-template>
+                </p-column>
+                <p-column field="active" header="Active002" [editable]="true">
+                        <ng-template let-col let-car="rowData" pTemplate="body">
+                                <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
+                        </ng-template>
+                </p-column>
+                <p-column field="active" header="Active003">
+                        <ng-template let-col let-car="rowData" pTemplate="body">
+                                <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
+                        </ng-template>
+                </p-column>
+                <p-column field="active" header="Active" [editable]="true" [style]=" {'overflow':'invisible' }">
+                        <!-- <ng-template let-col let-car="rowData" pTemplate="body">
+                             {{car[col.field] }}
+                        </ng-template> -->
+                        <ng-template let-col let-car="rowData" pTemplate="editor">
+                            <!-- <p-calendar [(ngModel)]="car[col.field]" appendTo="body"></p-calendar> -->
+                            <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
+                        </ng-template>
+                </p-column>
+                <p-column field="active" header="Active01" [editable]="true" [style]=" {'overflow':'visible' }">
+                        <ng-template let-col let-car="rowData" pTemplate="editor">
+                            <!-- <p-calendar [(ngModel)]="car[col.field]" appendTo="body"></p-calendar> -->
+                            <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
+                            <p-checkbox *ngIf="checked==true" [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
+                            <p-checkbox *ngIf="checked==true" [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
+                            <i *ngIf="checked==true" class="fa fa-check-square-o"></i>
+                            <i *ngIf="checked==true" class="fa fa-square-o"></i>
+                        </ng-template>
+                </p-column>
+                <p-column field="active" header="Active02" [editable]="true" [style]=" {'overflow':'visible' }">
+                        <ng-template pTemplate="body">
+                                <i *ngIf="checked==true" class="fa fa-check-square-o"></i>
+                                <i *ngIf="checked==false" class="fa fa-square-o"></i>
+                        </ng-template>
+                </p-column>
+                <!-- <p-column field="active" header="Active03" [editable]="true" [style]=" {'overflow':'visible' }">
+                        <ng-template let-col let-tenant="rowData" pTemplate="body">
+                                <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true">
+                                    kk
+                                </p-checkbox>
+                                <i *ngIf="checked==true" class="fa fa-check-square-o"></i>
+                                <i *ngIf="checked==false" class="fa fa-square-o"></i>
+                        </ng-template>
+                </p-column> -->
+            </p-dataTable>
+            <div class="ui-g-12">
+                selectedEditableCar: {{selectedEditableCar | json}}
+            </div>
+            <p-dataTable [value]="cars"     
+        [rows]="5"
+        selectionMode="single"
+        [(selection)]="selectedCar" 
+        [editable]="true"
+        [paginator]="true" 
+        [pageLinks]="3"
+        [rowsPerPageOptions]="[5,10,20]">
+                <p-column field="vin" header="Vin" [editable]="true"></p-column>
+                <p-column field="year" header="Year" [editable]="true"></p-column>
+                <p-column field="brand" header="Brand" [editable]="true">
+                    <ng-template let-col let-car="rowData" pTemplate="editor">
+                        <p-dropdown [(ngModel)]="car[col.field]" [options]="brands" [autoWidth]="false" [style]="{'width':'100%'}" required="true"  appendTo="body"></p-dropdown>
+                    </ng-template>
+                </p-column>
+                <p-column field="color" header="Color" [editable]="true"></p-column>
+                <p-column field="saleDate" header="Sale Date" [editable]="true" [style]=" {'overflow':'visible' }">
+                    <ng-template let-col let-car="rowData" pTemplate="body">
+                         {{car[col.field]|date }}
+                    </ng-template>
+                    <ng-template let-col let-car="rowData" pTemplate="editor">
+                        <p-calendar [(ngModel)]="car[col.field]" appendTo="body"></p-calendar>
+                    </ng-template>
+                </p-column>
+                <p-column field="active" header="Active" [editable]="true" [style]=" {'overflow':'visible' }">
+                        <ng-template let-col let-tenant="rowData" pTemplate="body">
+                                <i *ngIf="checked==true" class="fa fa-check-square-o"></i>
+                                <i *ngIf="checked==false" class="fa fa-square-o"></i>
+                        </ng-template>
+                </p-column>
+            </p-dataTable>
+            <div class="ui-g-12">
+                    selectedCar: {{selectedCar | json}}
+            </div>
+              <p-dataTable 
+                [value]="comments$ | async"
+                selectionMode="single"
+                [(selection)]="selectedComment" 
+                (onRowSelect)="onRowSelect($event)"
+                [rows]="5"
+                [editable]="true"
+                [paginator]="true" 
+                [pageLinks]="3"
+                [rowsPerPageOptions]="[5,10,20]">
+                  <p-column field="postId" header="postId" [editable]="true"></p-column>
+                  <p-column field="id" header="id" [editable]="true"></p-column>
+                  <p-column field="name" header="name" [editable]="true"></p-column>
+                  <p-column field="email" header="email" [editable]="true"></p-column>
+                  <ng-template pTemplate="paginatorLeft">
+                      <button type="button" pButton icon="fa-refresh"></button>
+                  </ng-template>
+                  <ng-template pTemplate="paginatorRight">
+                      <button type="button" 
+                      pButton icon="fa-cloud-upload"
+                      label="{{(this.comments$ | async)?.length}}"></button>
+                  </ng-template>
+              </p-dataTable>
+          
+          <p-footer>
+                this.comment: {{ this.comment | json}} <br/>
+          </p-footer>
+      </p-panel>
+  </div>
+
+</div>

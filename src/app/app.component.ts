@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
         icon: "fa-info",
         items: [
           { label: "Comments", icon: "fa-info", routerLink: ["comments"] },
-          { label: "Product", icon: "fa-info", routerLink: ["productdetail"] }
+          { label: "Configuration Settings Sample", icon: "fa-info", routerLink: ["productdetail"] },
+          { label: "Editable Table", icon: "fa-info", routerLink: ["editabletable"] }
         ]
       },
       {
