@@ -36,7 +36,7 @@
                         <p-calendar [(ngModel)]="car[col.field]" appendTo="body"></p-calendar>
                     </ng-template>
                 </p-column>
-                <p-column field="active" header="Active001" [editable]="true">
+                <!-- <p-column field="active" header="Active001" [editable]="true">
                         <ng-template let-col let-car="rowData" pTemplate="body">
                             <i *ngIf="car.active==true" class="fa fa-check-square-o"></i>
                             <i *ngIf="car.active==false" class="fa fa-square-o"></i>
@@ -46,7 +46,7 @@
                         <ng-template let-col let-car="rowData" pTemplate="body">
                                 <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
                         </ng-template>
-                </p-column>
+                </p-column> -->
                 <p-column field="active" header="Active003">
                         <ng-template let-col let-car="rowData" pTemplate="body">
                                 <p-checkbox [(ngModel)]="car[col.field]" appendTo="body" binary="true"></p-checkbox>
