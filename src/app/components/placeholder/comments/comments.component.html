@@ -41,6 +41,23 @@
           </p-header>
           <form *ngIf="true" [formGroup]="this.baseForm">
               <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+                    <div class="ui-grid-row">
+                            <div class="ui-grid-col-2">
+                                <label>id:</label>
+                            </div>
+                            <div class="ui-grid-col-6">
+                                <input type="text" 
+                                pInputText id="aName" 
+                                [(ngModel)]="this.testing"
+                                [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div *ngIf="formErrors.Name" class="ui-grid-col-4">
+                                {{ formErrors.id }}
+                            </div>
+                        </div>
+
+                        
                   <div class="ui-grid-row">
                       <div class="ui-grid-col-2">
                           <label>id:</label>
@@ -103,7 +120,8 @@
                           {{ formErrors.body }}
                       </div>
                   </div>
-
+                  <button pButton type="button"
+                  (click)="onclick()" class="ui-button-info"></button>
               </div>
           </form>
           <p-footer>
