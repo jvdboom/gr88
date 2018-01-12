@@ -67,8 +67,8 @@ export class CommentsComponent implements OnInit {
 
   initializeForm() {
     this.baseForm = this.baseFormBuilder.group({
-      "id": [this.comment.id, [Validators.required, Validators.minLength(1)]],
-      "postId": this.comment.postId,
+      "id": [this.comment.id, [Validators.required, Validators.min(1)]],
+      "postId": [this.comment.postId, [Validators.required, Validators.min(1), Validators.minLength(1)]],
       "name": this.comment.name,
       "email": this.comment.email,
       "body": this.comment.body,

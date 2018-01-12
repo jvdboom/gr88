@@ -12,7 +12,7 @@
             [pageLinks]="3" 
             [rowsPerPageOptions]="[5,10,20]"
             selectionMode="single" 
-            [(selection)]="selectedComment"
+            [(selection)]="this.selectedComment"
             (onRowSelect)="onRowSelect($event)">
               <p-column field="postId" header="postId"></p-column>
               <p-column field="id" header="id"></p-column>
