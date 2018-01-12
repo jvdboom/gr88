@@ -13,10 +13,12 @@ import { Car } from "../../models/car";
 export class EditableTableComponent implements OnInit {
   cars: Car[];
   selectedEditableCar: Car = undefined;
+  selectedCar: Car = undefined;
   checked: boolean = false;
 
   public comments$: Observable<Comment[]>;
   public comment: Comment = undefined;
+  public selectedComment: Comment = undefined;
 
   constructor(private jsonPlaceholderService: JsonPlaceholderService, private carService: CarService) {
     this.comments$ = jsonPlaceholderService.getRows("comment");
