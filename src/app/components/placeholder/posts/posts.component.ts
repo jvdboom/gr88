@@ -33,6 +33,7 @@ export class PostsComponent implements OnInit {
     this.selectedPost = new Post();
     this.selectItems = [];
     this.posts$ = jsonPlaceholderService.getRows("post");
+    
 
     this.users$ = jsonPlaceholderService.getRows("user");
     /** Find better solution. Maybe mapping oid */

@@ -1,63 +1,42 @@
 <p-growl [(value)]="msgs"></p-growl>
-<p-dataTable
-[value]="this.posts$ | async"
-[rows]="2" 
-[paginator]="(this.posts$ | async)?.length > 10 ? true : false" 
-[pageLinks]="3" 
-[rowsPerPageOptions]="[5,10,20]"
-[(selection)]="this.selectedPost"
-[editable]="true"
-(onEdit)="onEdit($event)"
-(onEditInit)="onEditInit($event)"
-(onRowSelect)="onRowSelect($event)"
-(onRowClick)="onRowClick($event)">
+<p-dataTable [value]="this.posts$ | async" [rows]="2" [paginator]="(this.posts$ | async)?.length > 10 ? true : false" [pageLinks]="3"
+    [rowsPerPageOptions]="[5,10,20]" [(selection)]="this.selectedPost" [editable]="true" (onEdit)="onEdit($event)" (onEditInit)="onEditInit($event)"
+    (onRowSelect)="onRowSelect($event)" (onRowClick)="onRowClick($event)">
 
-<p-column field="userId" header="userId" [style]="{'width':'260px','text-align':'center'}">
-    <ng-template let-col let-row="rowData" pTemplate="body">
-        <app-standard-dropdown
-          [id]="row[col.field]"
-          (onChange)='onChangeUserId($event)'>
-        </app-standard-dropdown>
+    <p-column field="userId" header="userId" [style]="{'width':'260px','text-align':'center'}">
+        <ng-template let-col let-row="rowData" pTemplate="body">
+            <app-standard-dropdown [id]="row[col.field]" (onChange)='onChangeUserId($event)'>
+            </app-standard-dropdown>
+        </ng-template>
+    </p-column>
+    <p-column field="title" header="title" [editable]="true"></p-column>
+    <p-column field="body" header="body" [editable]="true"></p-column>
+
+
+
+    <ng-template pTemplate="paginatorLeft">
+        <button type="button" pButton icon="fa-save" pTooltip="Save" [disabled]="!this.editedPosts.length>0" (click)="save()">
+        </button>
+        <button type="button" pButton icon="fa-trash-o" [disabled]="!this.selectedPost.id>0" (click)="delete()" pTooltip="Delete" class="ui-button-danger">
+        </button>
     </ng-template>
-</p-column>
-<p-column field="title" header="title" [editable]="true"></p-column>
-<p-column field="body" header="body" [editable]="true"></p-column>
-
-
-
-<ng-template pTemplate="paginatorLeft">
-  <button type="button" pButton icon="fa-save" 
-              pTooltip="Save" (click)="save()">
-  </button>
-  <button type="button" pButton icon="fa-trash-o"
-              (click)="delete()"
-              pTooltip="Delete" 
-              class="ui-button-danger">
-  </button>
-</ng-template>
-<p-footer>
-    <div class="ui-g">
-        <div class="ui-g-4">
-            <app-standard-dropdown
-            [id]="this.addedPost.userID"
-            (onChange)='onChangeAddedUserId($event)'>
-          </app-standard-dropdown>
-            <!-- <input id="input" type="text" pInputText [(ngModel)]="this.addedPost.userID">  -->
+    <p-footer>
+        <div class="ui-g">
+            <div class="ui-g-4">
+                <app-standard-dropdown [id]="this.addedPost.userID" (onChange)='onChangeAddedUserId($event)'>
+                </app-standard-dropdown>
+                <!-- <input id="input" type="text" pInputText [(ngModel)]="this.addedPost.userID">  -->
+            </div>
+            <div class="ui-g-4">
+                <input id="input" type="text" pInputText [(ngModel)]="this.addedPost.title">
+            </div>
+            <div class="ui-g-3">
+                <input id="input" type="text" pInputText [(ngModel)]="this.addedPost.body">
+            </div>
+            <div class="ui-g-1" align="right">
+                <button pButton type="button" (click)="add()" [disabled]="!this.addedPost.userId>0" icon="fa-plus" pTooltip="Add">
+                </button>
+            </div>
         </div>
-        <div class="ui-g-4">
-            <input id="input" type="text"  pInputText [(ngModel)]="this.addedPost.title"> 
-        </div>
-        <div class="ui-g-3">
-            <input id="input" type="text"  pInputText [(ngModel)]="this.addedPost.body"> 
-        </div>
-        <div class="ui-g-1" align="right">
-            <button pButton type="button"
-            (click)="add()"
-            [disabled]="!(this.Name != '' && this.element != '')"
-            icon="fa-plus"
-            pTooltip="Add">
-          </button>
-        </div>
-    </div>
-</p-footer>
+    </p-footer>
 </p-dataTable>

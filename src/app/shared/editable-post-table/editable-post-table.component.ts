@@ -73,7 +73,7 @@ export class EditablePostTableComponent implements OnInit {
   }
 
   add() {
-    this.growlService.addSingleMessage({ severity: "info", summary: "Add Post", detail: JSON.stringify(this.editedPosts[0]) });
+    this.growlService.addSingleMessage({ severity: "info", summary: "Add Post", detail: JSON.stringify(this.addedPost) });
   }
 
   delete() {
@@ -81,7 +81,7 @@ export class EditablePostTableComponent implements OnInit {
   }
 
   save() {
-    this.growlService.addSingleMessage({ severity: "info", summary: "Save changed Posts", detail: JSON.stringify(this.addedPost) });
+    this.growlService.addSingleMessage({ severity: "info", summary: "Save changed Posts", detail: JSON.stringify(this.editedPosts) });
   }
 
   onChangeUserId(event: number) {
@@ -93,6 +93,8 @@ export class EditablePostTableComponent implements OnInit {
   onChangeAddedUserId(event: number) {
     if (event > 0) {
       this.addedPost.userId = event;
+    } else {
+      this.addedPost.userId = 0;
     }
   }
 }
