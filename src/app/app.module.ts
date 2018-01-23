@@ -40,6 +40,7 @@ import { ErrorService } from "./services/error.service";
 import { PostsComponent } from "./components/placeholder/posts/posts.component";
 import { GrowlService } from "./services/growl.service";
 import { StandardDropdownComponent } from "./shared/standard-dropdown/standard-dropdown.component";
+import { EditablePostTableComponent } from "./shared/editable-post-table/editable-post-table.component";
 // import { YouTubeSearchComponent } from "./components/you-tube-search/you-tube-search.component";
 // import { youTubeSearchInjectables } from "./you-tube-search/you-tube-search.injectables";
 
@@ -54,7 +55,8 @@ import { StandardDropdownComponent } from "./shared/standard-dropdown/standard-d
     CapitalizePipe,
     SimpleHttpComponent,
     PostsComponent,
-    StandardDropdownComponent
+    StandardDropdownComponent,
+    EditablePostTableComponent
   ],
   imports: [
     BrowserModule,

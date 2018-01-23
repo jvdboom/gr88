@@ -7,12 +7,14 @@ import { EditableTableComponent } from "./components/editable-table/editable-tab
 import { PokedexComponent } from "./components/pokedex/pokedex.component";
 import { SimpleHttpComponent } from "./components/simple-http/simple-http-component";
 import { PostsComponent } from "./components/placeholder/posts/posts.component";
+import { EditablePostTableComponent } from "./shared/editable-post-table/editable-post-table.component";
 
 const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "productdetail", component: ProductDetailComponent },
   { path: "comments", component: CommentsComponent },
   { path: "posts", component: PostsComponent },
+  { path: "editableposttable", component: EditablePostTableComponent },
   { path: "editabletable", component: EditableTableComponent },
   { path: "pokedex", component: PokedexComponent },
   { path: "simplehttp", component: SimpleHttpComponent },

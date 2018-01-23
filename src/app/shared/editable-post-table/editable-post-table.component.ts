@@ -1,17 +1,17 @@
 import { Component, OnInit } from "@angular/core";
-import { Post } from "../../../models/post";
 import { Observable } from "rxjs/Observable";
-import { JsonPlaceholderService } from "../../../services/json-placeholder.service";
 import { SelectItem } from "primeng/primeng";
 import { Message } from "primeng/components/common/message";
-import { GrowlService } from "../../../services/growl.service";
+import { JsonPlaceholderService } from "../../services/json-placeholder.service";
+import { GrowlService } from "../../services/growl.service";
+import { Post } from "../../models/post";
+
 
 @Component({
-  selector: "app-posts",
-  templateUrl: "./posts.component.html",
-  styleUrls: ["./posts.component.css"]
+  selector: "app-editable-post-table",
+  templateUrl: "./editable-post-table.component.html"
 })
-export class PostsComponent implements OnInit {
+export class EditablePostTableComponent implements OnInit {
   /** p-growl */
   public _error: any;
   msgs: Message[] = [];
