@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { JsonPlaceholderService } from "../../../shared/json-placeholder.service";
 import { Observable } from "rxjs/Observable";
 
 import { Comment } from "../../../models/comment";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { JsonPlaceholderService } from "../../../services/json-placeholder.service";
 
 @Component({
   selector: "app-comments",

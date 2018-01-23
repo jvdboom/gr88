@@ -1,0 +1,9 @@
+<h2>Basic Request</h2>
+<button pButton type="button" (click)="makeRequest()" label="Make Request"></button>
+<div *ngIf="loading">loading...</div>
+<pre>{{data | json}}</pre>
+
+<h2>Basic Request async</h2>
+<pre>{{(data$ | async) | json}}</pre>
+<h2>Basic Request async</h2>
+<pre>{{(data$ | async)?.body | json}}</pre>

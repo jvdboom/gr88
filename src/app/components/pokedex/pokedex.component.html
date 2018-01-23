@@ -1,0 +1,55 @@
+<h3>Severity Buttons</h3>
+<button pButton type="button" (click)="form(1)" label="Primary"></button>
+<button pButton type="button" (click)="form(2)" label="Secondary" class="ui-button-secondary"></button>
+<button pButton type="button" (click)="form(3)" label="Success" class="ui-button-success"></button>
+<button pButton type="button" (click)="form(4)" label="Info"  class="ui-button-info"></button>
+<button pButton type="button" (click)="form(5)" label="Warning"  class="ui-button-warning"></button>
+<button pButton type="button" (click)="form(6)" label="Danger"  class="ui-button-danger"></button>
+
+https://pokeapi.co/api/v2/pokemon/bulbasaur/
+
+
+
+<!-- <p-table [columns]="cols" [value]="this.forms$ | async">
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th *ngFor="let col of columns">
+              {{col.header}}
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+          <td *ngFor="let col of columns">
+                  {{rowData[col.field]}}
+          </td>
+      </tr>
+  </ng-template>
+</p-table> -->
+<br/>
+{{ this.forms$ | json }}
+
+
+
+<!-- <hr>
+<div class="pokedex">
+  <div class="pokedex-pokemon" *ngFor="let p of pokemon">
+    <div class="pokedex-pokemon-id">
+      #{{ p.id}}
+    </div>
+    <img [ngClass]="{'hidden': !p.imageLoaded}" class="pokedex-pokemon-sprite" (load)="p.imageLoaded = true" [attr.src]="p.sprite">
+    <div class="pokedex-pokemon-name">
+      {{ p.name | capitalize }}
+    </div>
+  </div>
+</div>
+
+<button class="load-button" (click)="loadMore()" [disabled]="isLoading">
+  <span *ngIf="!error">
+    <span *ngIf="isLoading">Loading...</span>
+    <span *ngIf="!isLoading">Load more</span>
+  </span>
+  <span *ngIf="error">
+    Loading failed
+  </span>
+</button> -->

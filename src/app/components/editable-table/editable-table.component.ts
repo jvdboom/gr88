@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-import { JsonPlaceholderService } from "../../shared/json-placeholder.service";
 import { Comment } from "@angular/compiler";
 import { CarService } from "../../shared/car.service";
 import { Car } from "../../models/car";
+import { JsonPlaceholderService } from "../../services/json-placeholder.service";
 
 @Component({
   selector: "app-editable-table",
