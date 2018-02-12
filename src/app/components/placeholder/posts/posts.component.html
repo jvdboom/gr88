@@ -1,14 +1,16 @@
 <p-growl [(value)]="msgs"></p-growl>
+<p-contextMenu #cm [model]="items"></p-contextMenu>
+
 <div class="ui-g">
   <!-- Master  -->
   <div class="ui-g-6">
     <p-panel>
       <p-header>
-        Master begin
+        <h3>Click on (unique) row to expand turbo table</h3>
       </p-header>
       <p-dataTable
       [value]="this.posts$ | async"
-      [rows]="2" 
+      [rows]="10" 
       [paginator]="(this.posts$ | async)?.length > 10 ? true : false" 
       [pageLinks]="3" 
       [rowsPerPageOptions]="[5,10,20]"
@@ -81,19 +83,16 @@
   <div class="ui-g-6">
     <p-panel>
       <p-header>
-        Save these...
+        <h3>Dynamic Turbo Table</h3>
       </p-header>
       <!-- <p-dropdown [options]="selectItems" [(ngModel)]="selectedCity2" optionLabel="name"></p-dropdown> -->
       <!-- <p-dropdown [options]="this.users$" optionLabel="name"></p-dropdown> -->
-
-      
             <p-table [value]="this.editedPosts"
-            [rows]="5" 
-            [paginator]="this.editedPosts.length > 5 ? true : false" 
+            [paginator]="true" 
             [pageLinks]="3" 
-            [rowsPerPageOptions]="[5,10,20]">
-            <p-header>Posts to save...</p-header>
-
+            [rows]="5" 
+            [rowsPerPageOptions]="[5,10,20]"
+            [(contextMenuSelection)]="selectedPost" [contextMenu]="cm">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>id</th>
@@ -110,6 +109,16 @@
                 </ng-template>
           </p-table>
           <br/>
+          <p-dataTable
+          [value]="this.editedPosts"
+          [rows]="10" 
+          [paginator]="true" 
+          [pageLinks]="3" 
+          [rowsPerPageOptions]="[5,10,20]">
+          <p-header>Posts to save...</p-header>
+          <p-column field="id" header="id"></p-column>
+          <p-column field="title" header="title"></p-column>
+        </p-dataTable>
             addedPost: {{ this.addedPost | json }}
 
             <!-- <div class="ui-g-12">

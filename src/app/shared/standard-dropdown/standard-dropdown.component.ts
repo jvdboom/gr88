@@ -17,7 +17,7 @@ import { JsonPlaceholderService } from "../../services/json-placeholder.service"
   `
 })
 export class StandardDropdownComponent implements OnInit {
-  // @Input() tableName: string = "";
+  @Input() tableName: string = "";
   // @Input() tableCell: string = "";
   @Input() id: number = 0;
   @Output() onChange: EventEmitter<number> = new EventEmitter<number>();
@@ -30,7 +30,7 @@ export class StandardDropdownComponent implements OnInit {
     this.dropDownItems$ = this.jsonPlaceholderService.getRows("user");
     this.dropDownItems$.subscribe(rows => {
       this.selectItems = [];
-      this.selectItems.push({ label: `Users`, value: 0 });
+      this.selectItems.push({ label: this.tableName, value: 0 });
       rows.forEach(row => {
         this.selectItems.push({ label: `${row[`name`]}`, value: row.id });
       });

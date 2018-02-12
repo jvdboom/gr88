@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Post } from "../../../models/post";
 import { Observable } from "rxjs/Observable";
 import { JsonPlaceholderService } from "../../../services/json-placeholder.service";
-import { SelectItem } from "primeng/primeng";
+import { SelectItem, MenuItem } from "primeng/primeng";
 import { Message } from "primeng/components/common/message";
 import { GrowlService } from "../../../services/growl.service";
 
@@ -26,6 +26,7 @@ export class PostsComponent implements OnInit {
   addedPost: Post;
   selectItems: SelectItem[];
   post: Post;
+  items: MenuItem[];
 
   constructor(private jsonPlaceholderService: JsonPlaceholderService, private growlService: GrowlService) {
     growlService.clear();
@@ -33,8 +34,6 @@ export class PostsComponent implements OnInit {
     this.selectedPost = new Post();
     this.selectItems = [];
     this.posts$ = jsonPlaceholderService.getRows("post");
-    
-
     this.users$ = jsonPlaceholderService.getRows("user");
     /** Find better solution. Maybe mapping oid */
     this.selectItems.push({ label: "Select Name", value: "0" });
@@ -43,6 +42,12 @@ export class PostsComponent implements OnInit {
         this.selectItems.push({ label: user["name"], value: user["id"] });
       });
     });
+
+    this.items = [];
+    this.items = [
+      { label: "variable actions", icon: "fa-search", command: (event) => this.methodOne() },
+      { label: "here", icon: "fa-close", command: (event) => this.methodTwo() }
+    ];
   }
 
   ngOnInit() {
@@ -66,6 +71,22 @@ export class PostsComponent implements OnInit {
 
   onEdit(event: any) {
     console.log(`onEdit: ${event}=>`, event);
+  }
+
+  contextMenuSelected(aEvent: any) {
+    console.log(`onContextMenuSelect: ${aEvent.data}`);
+    this.items = [];
+    this.items = [
+      { label: "variable actions", icon: "fa-search", command: (event) => this.methodOne() },
+      { label: "here", icon: "fa-close", command: (event) => this.methodTwo() }
+    ];
+  }
+
+  methodOne() {
+
+  }
+  methodTwo() {
+
   }
 
   onEditInit(event: any) {

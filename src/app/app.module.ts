@@ -15,11 +15,13 @@ import { TableModule } from "primeng/table";
 import { DataTableModule } from "primeng/datatable";
 import { InputTextModule, DialogModule } from "primeng/primeng";
 import { DropdownModule, CalendarModule } from "primeng/primeng";
-import {CheckboxModule} from "primeng/primeng";
-import {GrowlModule} from "primeng/growl";
-import {MessagesModule} from "primeng/messages";
-import {MessageModule} from "primeng/message";
+import { CheckboxModule } from "primeng/primeng";
+import { GrowlModule } from "primeng/growl";
+import { MessagesModule } from "primeng/messages";
+import { MessageModule } from "primeng/message";
 import { MessageService } from "primeng/components/common/messageservice";
+import { ContextMenuModule } from "primeng/contextmenu";
+// import { MenuItem } from "primeng/api";
 
 import { ProductDetailComponent } from "./components/product-detail/product-detail.component";
 import { AppSettingsService } from "./shared/app-settings.service";
@@ -61,6 +63,7 @@ import { EditablePostTableComponent } from "./shared/editable-post-table/editabl
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    ContextMenuModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MenubarModule,
@@ -83,9 +86,9 @@ import { EditablePostTableComponent } from "./shared/editable-post-table/editabl
     MessageModule
   ],
   providers: [AppSettingsService, ErrorService,
-              JsonPlaceholderService, CarService, PokedexService,
-              GrowlService,
-              StandardService, MessageService],
+    JsonPlaceholderService, CarService, PokedexService,
+    GrowlService,
+    StandardService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
