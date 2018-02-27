@@ -1,0 +1,177 @@
+<div class="ui-g">
+        <div class="ui-g-12">
+<p-table [columns]="cols" [value]="this.requests$ | async" [resizableColumns]="true" [paginator]="true" [rows]="10" [first]="first" dataKey="RequestID">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="width: 2.25em"></th>
+                <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                <tr>
+                    <td>
+                        <a href="#" [pRowToggler]="rowData">
+                            <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
+                        </a>
+                    </td>
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+            <!-- <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns"> -->
+            <!-- <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns"> -->
+            <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                <tr>
+                    <td [attr.colspan]="columns.length + 1">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                    <!-- <app-pokedex></app-pokedex>    -->
+                                    <app-editable-post-table>        </app-editable-post-table>     
+                            </div>
+                        </div>
+                    </td>
+                </tr>                    
+                    <!-- <tr>
+                        <td [attr.colspan]="columns.length + 1">
+                                <div class="ui-g-12 ui-md-12">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12">
+                                            <b>Vin:</b> {{rowData.TenantName}}
+                                        </div>
+                                        <div class="ui-g-12">
+                                            <b>Vin:</b> {{rowData.CurrentState}}
+                                        </div>
+                                        <div class="ui-g-12">
+                                            <b>Brand:</b> {{rowData.FileName}}
+                                        </div>
+                                        <div class="ui-g-12">
+                                            <b>Color:</b> {{rowData.DateTime}}
+                                        </div>
+                                    </div>
+                                </div>
+                        </td>
+                    </tr> -->
+            </ng-template>
+
+        <ng-template pTemplate="paginatorleft" let-state>
+                <button pButton
+                    type="button"
+                    pTooltip="Save"
+                    icon="fa-save" 
+                    (click)="save()">
+                </button>
+            <!-- NOT WORKING
+                <p-button pTooltip="Delete"
+                    icon="fa-trash-o" 
+                    (click)="delete()"
+                    class="ui-button-danger">
+                </p-button>
+            -->
+                <button pButton
+                    type="button"
+                    pTooltip="Save"
+                    icon="fa-save" 
+                    (click)="save()">
+                </button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+                {{ (this.requests$ | async)?.length }}
+                <!-- Total Records: {{state.totalRecords}} -->
+        </ng-template>
+        </p-table>
+    </div>
+</div>
+
+        <!-- <h3 class="first">Single Row Selection</h3>
+
+
+
+            <p-table [columns]="cols" [value]="this.photos$ | async" [paginator]="true" [rows]="10" [first]="first" selectionMode="single" [(selection)]="selectedPhoto">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorLeft" let-state>
+            {{state.first}}
+             <button type="button" pButton icon="fa-refresh"></button>
+     </ng-template>
+    <ng-template pTemplate="paginatorRight">
+            <button type="button" pButton icon="fa-cloud-upload"></button>
+    </ng-template>  -->
+<!-- 
+    <ng-template pTemplate="summary">
+            <div style="text-align: left">
+                Selected Photo {{ this.totalPhotos }}: {{selectedPhoto ? selectedPhoto.id + ' - ' + selectedPhoto.title : 'none'}}
+            </div>
+            <div>
+                There are {{this.totalPhotos}} photos
+            </div>
+    </ng-template> 
+</p-table>
+
+<!-- <p-paginator rows="10" pageLinkSize="3"    [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator> -->
+<!-- 
+
+<h3>Basic Single Row Selection</h3>
+<p-table
+selectionMode="single" 
+[(selection)]="this.selectedPhoto"
+dataKey="id"
+[value]="this.photos$ | async">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>url</th>
+          <th>thumbnailUrl</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-photo>
+      <tr>
+          <td>{{photo.id}}</td>
+          <td>{{photo.title}}</td>
+          <td>{{photo.url}}</td>
+          <td>{{photo.thumbnailUrl}}</td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+      <div style="text-align: left">
+          Selected Photo: {{this.selectedPhoto ? this.selectedPhoto.id + ' - ' + this.selectedPhoto.title :'No Selection'}}
+      </div>
+  </ng-template>
+</p-table>
+
+
+
+<h3>Dynamic Columns</h3>
+<p-table [columns]="cols" [value]="this.photos$ | async">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+   -->

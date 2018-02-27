@@ -21,6 +21,7 @@ import { MessagesModule } from "primeng/messages";
 import { MessageModule } from "primeng/message";
 import { MessageService } from "primeng/components/common/messageservice";
 import { ContextMenuModule } from "primeng/contextmenu";
+import {PaginatorModule} from "primeng/paginator";
 // import { MenuItem } from "primeng/api";
 
 import { ProductDetailComponent } from "./components/product-detail/product-detail.component";
@@ -43,6 +44,8 @@ import { PostsComponent } from "./components/placeholder/posts/posts.component";
 import { GrowlService } from "./services/growl.service";
 import { StandardDropdownComponent } from "./shared/standard-dropdown/standard-dropdown.component";
 import { EditablePostTableComponent } from "./shared/editable-post-table/editable-post-table.component";
+import { KiteLyComponent } from "./components/kite-ly/kite-ly.component";
+import { TableTurboComponent } from "./components/primeng/table-turbo/table-turbo.component";
 // import { YouTubeSearchComponent } from "./components/you-tube-search/you-tube-search.component";
 // import { youTubeSearchInjectables } from "./you-tube-search/you-tube-search.injectables";
 
@@ -58,7 +61,9 @@ import { EditablePostTableComponent } from "./shared/editable-post-table/editabl
     SimpleHttpComponent,
     PostsComponent,
     StandardDropdownComponent,
-    EditablePostTableComponent
+    EditablePostTableComponent,
+    KiteLyComponent,
+    TableTurboComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +76,7 @@ import { EditablePostTableComponent } from "./shared/editable-post-table/editabl
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    PaginatorModule,
     InputTextareaModule,
     DialogModule,
     PanelModule,

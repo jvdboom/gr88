@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
         label: "Examples",
         icon: "fa-info",
         items: [
+          { label: "Kite.ly", icon: "fa-info", routerLink: ["kitely"] },
           { label: "Comments", icon: "fa-info", routerLink: ["comments"] },
           { label: "Posts", icon: "fa-info", routerLink: ["posts"] },
           { label: "Configuration Settings Sample", icon: "fa-info", routerLink: ["productdetail"] },
@@ -33,6 +34,13 @@ export class AppComponent implements OnInit {
         icon: "fa-info",
         items: [
           { label: "Pokedex", icon: "fa-info", routerLink: ["pokedex"] },
+        ]
+      },
+      {
+        label: "Primeng",
+        icon: "fa-info",
+        items: [
+          { label: "TurboTable", icon: "fa-info", routerLink: ["tableturbo"] },
         ]
       },
       {
