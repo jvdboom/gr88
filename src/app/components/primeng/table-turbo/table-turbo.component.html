@@ -1,16 +1,24 @@
 <div class="ui-g">
-        <div class="ui-g-12">
-<p-table [columns]="cols" [value]="this.requests$ | async" [resizableColumns]="true" [paginator]="true" [rows]="10" [first]="first" dataKey="RequestID">
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th style="width: 2.25em"></th>
-                <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
-                    {{col.header}}
-                    <p-sortIcon [field]="col.field"></p-sortIcon>
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+    <div class="ui-g-12">
+        <p-table #dt [columns]="cols" [value]="this.requests$ | async" [resizableColumns]="true" [paginator]="true" [rows]="10" [first]="first"
+            dataKey="RequestID">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 2.25em"></th>
+                    <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+                <tr>
+                        <th style="width: 2.25em"></th>
+                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <p-dropdown *ngSwitchCase="'CurrentState'" [options]="this.statusList" [style]="{'width':'100%'}"
+                            (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                        </th>
+                    </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                 <tr>
                     <td>
                         <a href="#" [pRowToggler]="rowData">
@@ -26,16 +34,19 @@
             <!-- <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns"> -->
             <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
                 <tr>
-                    <td [attr.colspan]="columns.length + 1">
+                    <!-- <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                        <p-dropdown *ngSwitchCase="'CurrentState'" [options]="this.errorList" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                    </th> -->
+                    <td [attr.colspan]="3">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                    <!-- <app-pokedex></app-pokedex>    -->
-                                    <app-editable-post-table>        </app-editable-post-table>     
+
+                                <app-editable-post-table> </app-editable-post-table>
                             </div>
                         </div>
                     </td>
-                </tr>                    
-                    <!-- <tr>
+                </tr>
+                <!-- <tr>
                         <td [attr.colspan]="columns.length + 1">
                                 <div class="ui-g-12 ui-md-12">
                                     <div class="ui-g">
@@ -57,36 +68,28 @@
                     </tr> -->
             </ng-template>
 
-        <ng-template pTemplate="paginatorleft" let-state>
-                <button pButton
-                    type="button"
-                    pTooltip="Save"
-                    icon="fa-save" 
-                    (click)="save()">
+            <ng-template pTemplate="paginatorleft" let-state>
+                <button pButton type="button" pTooltip="Save" icon="fa-save" (click)="save()">
                 </button>
-            <!-- NOT WORKING
+                <!-- NOT WORKING
                 <p-button pTooltip="Delete"
                     icon="fa-trash-o" 
                     (click)="delete()"
                     class="ui-button-danger">
                 </p-button>
             -->
-                <button pButton
-                    type="button"
-                    pTooltip="Save"
-                    icon="fa-save" 
-                    (click)="save()">
+                <button pButton type="button" pTooltip="Save" icon="fa-save" (click)="save()">
                 </button>
-        </ng-template>
-        <ng-template pTemplate="paginatorright">
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
                 {{ (this.requests$ | async)?.length }}
                 <!-- Total Records: {{state.totalRecords}} -->
-        </ng-template>
+            </ng-template>
         </p-table>
     </div>
 </div>
 
-        <!-- <h3 class="first">Single Row Selection</h3>
+<!-- <h3 class="first">Single Row Selection</h3>
 
 
 

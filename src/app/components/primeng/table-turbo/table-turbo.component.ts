@@ -3,6 +3,7 @@ import { JsonPlaceholderService } from "../../../services/json-placeholder.servi
 import { Observable } from "rxjs/Observable";
 import { Photo } from "../../../models/photo";
 import { Request } from "../../../models/request";
+import { SelectItem } from "primeng/primeng";
 @Component({
   selector: "app-table-turbo",
   templateUrl: "./table-turbo.component.html",
@@ -13,6 +14,7 @@ export class TableTurboComponent implements OnInit {
   public photos$: Observable<any[]>;
   public requests$: Observable<Request[]>;
   public first: number = 0;
+  public statusList: SelectItem[];
 
   public cols: any[];
   public selectedPhoto: Photo;
@@ -24,6 +26,14 @@ export class TableTurboComponent implements OnInit {
       { field: "url", header: "url" },
       { field: "title", header: "title" },
       { field: "thumbnailUrl", header: "thumbnailUrl" }
+    ];
+
+    this.statusList = [
+      { label: "Choose", value: undefined },
+      { label: "Registered", value: "Registered" },
+      { label: "RequestError", value: "RequestError" },
+      { label: "RequestFinished", value: "RequestFinished" },
+      { label: "RequestRestarted", value: "RequestRestarted" },
     ];
 
     this.cols = [];
@@ -70,10 +80,10 @@ export class TableTurboComponent implements OnInit {
     event.pageCount = this.totalPhotos / event.rows;
 
     console.log(event);
-    //event.first = Index of the first record
-    //event.rows = Number of rows to display in new page
-    //event.page = Index of the new page
-    //event.pageCount = Total number of pages
+    // event.first = Index of the first record
+    // event.rows = Number of rows to display in new page
+    // event.page = Index of the new page
+    // event.pageCount = Total number of pages
   }
 
 }
