@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Demo site for PrimeNG FrameWork
+
+<p-table> in combination with pTemplate="rowexpansion" and 
+<p-table .. [resizableColumns]="true"> will not work correctly.
+
+If you use a <p-dropdown *ngSwitchCase=...> in  the <ng-template pTemplate="header" let-columns>
+The <p-dropdown> object will disappear under the next row!!
