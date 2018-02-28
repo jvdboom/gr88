@@ -23,7 +23,7 @@
     <p-footer>
         <div class="ui-g">
             <div class="ui-g-4">
-                <app-standard-dropdown [id]="this.addedPost.userID" (onChange)='onChangeAddedUserId($event)'>
+                <app-standard-dropdown [id]="this.addedPost.userId" (onChange)='onChangeAddedUserId($event)'>
                 </app-standard-dropdown>
                 <!-- <input id="input" type="text" pInputText [(ngModel)]="this.addedPost.userID">  -->
             </div>
@@ -34,7 +34,8 @@
                 <input id="input" type="text" pInputText [(ngModel)]="this.addedPost.body">
             </div>
             <div class="ui-g-1" align="right">
-                <button pButton type="button" (click)="add()" [disabled]="!this.addedPost.userId>0" icon="fa-plus" pTooltip="Add">
+                    <!-- [disabled]="!this.addedPost.userId>=1" -->
+                <button pButton type="button" (click)="add()" icon="fa-plus" pTooltip="Add">
                 </button>
             </div>
         </div>

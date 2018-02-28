@@ -1,6 +1,64 @@
+<h3>Work in progress</h3>
+<p-table #dt1   [columns]="cols" [value]="this.requests$ | async"
+                [paginator]="true" 
+                [rows]="this.rows"
+                dataKey="RequestID">
+        <ng-template pTemplate="caption">
+            <div style="text-align: left">        
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" 
+                pInputText size="50"
+                placeholder="Global Filter"
+                (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                style="width:auto">
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="width: 2.25em"></th>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr>
+                <th style="width: 2.25em"></th>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                        <p-dropdown *ngSwitchCase="'CurrentState'" [options]="this.statusList" [style]="{'width':'100%'}"
+                        (onChange)="dt1.filter($event.value, col.field, 'equals')"></p-dropdown>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td>
+                    <a href="#" [pRowToggler]="rowData">
+                        <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
+                    </a>
+                </td>
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                <tr>
+                    <td [attr.colspan]="3">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <app-editable-post-table> </app-editable-post-table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+        </ng-template>
+    </p-table>
+
+
+<h3>Testing RowExpand with DropDown</h3>
 <div class="ui-g">
     <div class="ui-g-12">
-        <p-table #dt [columns]="cols" [value]="this.requests$ | async" [resizableColumns]="true" [paginator]="true" [rows]="10" [first]="first"
+        <p-table #dt [columns]="cols" [value]="this.requests$ | async" [resizableColumns]="true" 
+        [paginator]="true" [rows]="this.rows" [first]="first"
             dataKey="RequestID">
             <ng-template pTemplate="header" let-columns>
                 <tr>
@@ -13,7 +71,7 @@
                 <tr>
                         <th style="width: 2.25em"></th>
                         <th *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <p-dropdown *ngSwitchCase="'CurrentState'" [options]="this.statusList" [style]="{'width':'100%'}"
+                            <p-dropdown *ngSwitchCase="'CurrentState'" [options]="this.statusList" [style]="{'width':'100%','z-index': '10'}"
                             (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
                         </th>
                     </tr>
@@ -88,6 +146,45 @@
         </p-table>
     </div>
 </div>
+
+<h3>Working DropDown</h3>
+<p-table #dt2 [columns]="cols" [value]="this.requests$ | async" [paginator]="true" [rows]="this.rows">
+        <ng-template pTemplate="caption">
+            <div style="text-align: right">        
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                        <p-dropdown *ngSwitchCase="'CurrentState'" [options]="this.statusList" [style]="{'width':'100%','z-index': '10'}"
+                        (onChange)="dt2.filter($event.value, col.field, 'equals')"></p-dropdown>
+                    <!-- <p-multiSelect *ngSwitchCase="'color'" [options]="colors" defaultLabel="All Colors" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect> -->
+                    <!-- <input *ngSwitchCase="'vin'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"> -->
+                    <!-- <div *ngSwitchCase="'year'">
+                        {{yearFilter}}
+                        <i class="fa fa-close" (click)="yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)" style="cursor:pointer"></i>
+                        <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010" (onChange)="onYearChange($event, dt)"></p-slider>
+                    </div> -->
+                    <!-- <p-dropdown *ngSwitchCase="'brand'" [options]="brands" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown> -->
+                    <!-- <p-multiSelect *ngSwitchCase="'color'" [options]="colors" defaultLabel="All Colors" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect> -->
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
 
 <!-- <h3 class="first">Single Row Selection</h3>
 

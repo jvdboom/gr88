@@ -65,6 +65,22 @@ export class JsonPlaceholderService {
       .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
   }
 
+  getRows4TurboTableFile(): Observable<any[]> {
+    // tslint:disable-next-line:max-line-length
+    const url = `assets/data/request.json`;
+    return this.http
+      .get<any[]>(url)
+      .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
+  }
+
+
+//  getCarsSmall() {
+//     return this.http.get<any>("assets/data/cars-small.json")
+//         .toPromise()
+//         .then(res => <Car[]> res.data)
+//         .then(data => data);
+// }
+
   //   /**
   //  * @param aTableName, the name of the table to get all rows from i.e. Tenant
   //  * @param aFilter i.e. where=Active=true , where=TenantID=x

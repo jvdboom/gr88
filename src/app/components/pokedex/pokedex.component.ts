@@ -24,7 +24,7 @@ export class PokedexComponent implements OnInit {
   error: boolean = false;
 
 
-  private forms$: Observable<any[]>;
+  public forms$: Observable<any[]>;
   constructor(private pokedexService: PokedexService) { }
 
   /**

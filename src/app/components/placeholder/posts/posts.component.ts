@@ -21,6 +21,9 @@ export class PostsComponent implements OnInit {
   public users$: Observable<Object[]>;
   public events: any[] = [];
 
+  public Name: string;
+  public element: string;
+
   selectedUser: any;
   selectedPost: Post;
   addedPost: Post;

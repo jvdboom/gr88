@@ -17,9 +17,8 @@ import { JsonPlaceholderService } from "../../services/json-placeholder.service"
   `
 })
 export class StandardDropdownComponent implements OnInit {
-  @Input() tableName: string = "";
-  // @Input() tableCell: string = "";
-  @Input() id: number = 0;
+  @Input() tableName = "";
+  @Input() id = 0;
   @Output() onChange: EventEmitter<number> = new EventEmitter<number>();
 
   selectItems: SelectItem[];
@@ -37,7 +36,7 @@ export class StandardDropdownComponent implements OnInit {
     });
   }
 
-  handleOnChange() {
+  handleOnChange(event: any) {
     this.onChange.emit(this.id);
   }
 

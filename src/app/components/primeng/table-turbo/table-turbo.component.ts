@@ -14,6 +14,7 @@ export class TableTurboComponent implements OnInit {
   public photos$: Observable<any[]>;
   public requests$: Observable<Request[]>;
   public first: number = 0;
+  public rows = 5;
   public statusList: SelectItem[];
 
   public cols: any[];
@@ -45,15 +46,16 @@ export class TableTurboComponent implements OnInit {
       { field: "DateTime", header: "DateTime" },
     ];
 
-    this.photos$ = jsonPlaceholderService.getRows("photo");
-    this.photos$.subscribe((res: any[]) => {
-      this.totalPhotos = res.length;
-    });
+    // this.photos$ = jsonPlaceholderService.getRows("photo");
+    // this.photos$.subscribe((res: any[]) => {
+    //   this.totalPhotos = res.length;
+    // });
   }
 
 
   ngOnInit() {
-    this.requests$ = this.jsonPlaceholderService.getRows4TurboTable();
+    // this.requests$ = this.jsonPlaceholderService.getRows4TurboTable();
+    this.requests$ = this.jsonPlaceholderService.getRows4TurboTableFile();
     // this.photos$.subscribe((res: any[]) => {
     //   this.totalPhotos = res.length;
     // });
