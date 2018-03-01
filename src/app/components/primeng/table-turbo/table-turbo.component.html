@@ -3,7 +3,12 @@
                 [value]="this.requests$ | async"
                 [paginator]="true" 
                 [rows]="this.rows"
-                dataKey="RequestID">
+                dataKey="RequestID"
+                selectionMode="single"
+                [(selection)]="this.selectedRequest"
+                (onRowSelect)="onRowSelect($event)"
+                (onRowExpand)="onRowExpand($event)"
+                (onPage)="onPage($event)">
         <ng-template pTemplate="caption">
             <div style="text-align: left">        
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>

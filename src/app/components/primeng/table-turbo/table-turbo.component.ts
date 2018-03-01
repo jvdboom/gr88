@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Observable";
 import { Photo } from "../../../models/photo";
 import { Request } from "../../../models/request";
 import { SelectItem } from "primeng/primeng";
+import { stringify } from "querystring";
 @Component({
   selector: "app-table-turbo",
   templateUrl: "./table-turbo.component.html",
@@ -20,6 +21,7 @@ export class TableTurboComponent implements OnInit {
   public cols: any[];
   public selectedPhoto: Photo;
   public totalPhotos: number;
+  public selectedRequest: Request;
 
   constructor(private jsonPlaceholderService: JsonPlaceholderService) {
     this.cols = [
@@ -73,6 +75,21 @@ export class TableTurboComponent implements OnInit {
   delete() {
 
   }
+
+  onRowSelect(event: any) {
+    const request: Request = event.data;
+    console.log(`onRowSelect->request:`, stringify(request));
+  }
+
+  onRowExpand(event: any) {
+    const request: Request = event.data;
+    console.log(`onRowExpand->request:`, stringify(request));
+  }
+
+  onPage(event: any) {
+    console.log(`onPage->number and index:`, stringify(event));
+  }
+
 
   paginate(event) {
     console.log(event);
