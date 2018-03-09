@@ -10,17 +10,18 @@
                 (onRowExpand)="onRowExpand($event)"
                 (onPage)="onPage($event)">
         <ng-template pTemplate="caption">
-            <div style="text-align: left">        
+            <div style="text-align: left"> 
+                Search all
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                 <input type="text" 
                 pInputText size="50"
-                placeholder="Global Filter"
+                placeholder="Requests"
                 (input)="dt1.filterGlobal($event.target.value, 'contains')"
                 style="width:auto">
             </div>
         </ng-template>
         <ng-template pTemplate="header" let-columns>
-            
+
             <tr>
                 <th style="width: 2.25em"></th>
                 <th *ngFor="let col of columns">
@@ -58,10 +59,22 @@
                     </td>
                 </tr>
         </ng-template>
+        <ng-template pTemplate="paginatorleft" let-state>
+                <button pButton type="button" pTooltip="Save" tooltipPosition="bottem" icon="fa-tree" (click)="save()">
+                </button>
+            </ng-template>
+        <ng-template pTemplate="paginatorright">Total:
+                {{ (this.requests$ | async)?.length }}
+                <!-- Total Records: {{state.totalRecords}} -->
+        </ng-template>
     </p-table>
 
-
-<h3>Testing RowExpand with DropDown</h3>
+    <div class="ui-g">
+        <h3>Testing RowExpand with DropDown</h3>
+    </div>
+    <div>
+            Expandable and Resizable not working together!!
+    </div>
 <div class="ui-g">
     <div class="ui-g-12">
         <p-table #dt [columns]="cols" [value]="this.requests$ | async" [resizableColumns]="true" 

@@ -1,0 +1,8 @@
+<h3>Dynamic accordion</h3>
+<p-accordion [activeIndex]="this.activeIndex">
+    <p-accordionTab *ngFor="let count of this.tenantDummyList;let i=index;"
+    header="{{ (this.tenants && this.tenants[i].Name != undefined) ? this.tenants[i].Name: 'New tenant...' }}">
+        <app-validation
+        [(tenant)]="this.tenants[i]"></app-validation>
+    </p-accordionTab>
+</p-accordion>

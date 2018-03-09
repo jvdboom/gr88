@@ -1,0 +1,130 @@
+[
+{
+"MessageRepeatingElement": "message_content",
+"TenantID": 2,
+"Description": "Testdata",
+"HeaderElement": "message_parameters",
+"ID": 1,
+"Name": "Testdata_1"
+},
+{
+"MessageRepeatingElement": null,
+"TenantID": 3,
+"Description": null,
+"HeaderElement": null,
+"ID": 2,
+"Name": "Specificatie"
+},
+{
+"MessageRepeatingElement": null,
+"TenantID": 3,
+"Description": null,
+"HeaderElement": null,
+"ID": 3,
+"Name": "JT_Specificatie"
+},
+{
+"MessageRepeatingElement": "message_content",
+"TenantID": 3,
+"Description": "OLA",
+"HeaderElement": "message_parameters",
+"ID": 4,
+"Name": "OLA"
+},
+{
+"MessageRepeatingElement": null,
+"TenantID": 3,
+"Description": "MonthReport",
+"HeaderElement": null,
+"ID": 5,
+"Name": "MonthReport"
+},
+{
+"MessageRepeatingElement": "message_content",
+"TenantID": 5,
+"Description": "XML_COG",
+"HeaderElement": "message_parameters",
+"ID": 6,
+"Name": "JT_XML"
+},
+{
+"MessageRepeatingElement": "Message",
+"TenantID": 4,
+"Description": "For demo purposes",
+"HeaderElement": "Header",
+"ID": 7,
+"Name": "Demo"
+},
+{
+"MessageRepeatingElement": "message_content",
+"TenantID": 17,
+"Description": "Testing",
+"HeaderElement": "message_parameters",
+"ID": 9,
+"Name": "Test_JobType_1"
+},
+{
+"MessageRepeatingElement": "TestRepeatingelement",
+"TenantID": 16,
+"Description": "TestDescription",
+"HeaderElement": "TestHeaderelment",
+"ID": 17,
+"Name": "TestName"
+},
+{
+"MessageRepeatingElement": "TestRepeatingelement",
+"TenantID": 16,
+"Description": "TestDescription",
+"HeaderElement": "TestHeaderelment",
+"ID": 18,
+"Name": "TestName"
+},
+{
+"MessageRepeatingElement": "TestName2",
+"TenantID": 16,
+"Description": "TestName2",
+"HeaderElement": "TestName2",
+"ID": 19,
+"Name": "TestName2"
+},
+{
+"MessageRepeatingElement": "TestName2",
+"TenantID": 16,
+"Description": "TestName2",
+"HeaderElement": "TestName2",
+"ID": 20,
+"Name": "TestName2"
+},
+{
+"MessageRepeatingElement": null,
+"TenantID": 75,
+"Description": "test",
+"HeaderElement": "test",
+"ID": 42,
+"Name": "test"
+},
+{
+"MessageRepeatingElement": null,
+"TenantID": 75,
+"Description": "test",
+"HeaderElement": "test",
+"ID": 43,
+"Name": "test"
+},
+{
+"MessageRepeatingElement": "JT001",
+"TenantID": 13,
+"Description": "JT001",
+"HeaderElement": "JT001",
+"ID": 45,
+"Name": "JT001"
+},
+{
+"MessageRepeatingElement": null,
+"TenantID": 13,
+"Description": "JT003",
+"HeaderElement": "JT003",
+"ID": 46,
+"Name": "JT003"
+}
+]

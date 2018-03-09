@@ -2,6 +2,21 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "name": "@Debug",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:4200/",
+        //"port": 9222,
+        "runtimeExecutable": "C:\\Users\\boomj\\AppData\\Local\\Google\\Chrome SxS\\Application\\chrome.exe",//${env.USERPROFILE}/AppData/Local/Google/Chrome SxS/Application/chrome.exe",
+        "runtimeArgs": [
+          "--new-window",
+          "--remote-debugging-port=9222",
+          "--disable-session-crashed-bubble",
+          "--user-data-dir=c:\\temp\\chromeuserdata"
+        ], //"C:\Users\BoomJ\AppData\Local\Google\Chrome SxS\Application\chrome.exe" --remote-debugging-port=9222
+        "webRoot": "${workspaceRoot}/app/"
+      },
+      {
         "name": "Debug 4 Me",
         "type": "chrome",
         "request": "launch",

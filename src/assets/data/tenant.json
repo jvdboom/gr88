@@ -1,0 +1,106 @@
+[
+{
+"ParentID": 0,
+"CountryCodeID": 150,
+"Active": false,
+"CustomerNumber": "SecretCode",
+"ID": 1,
+"Name": "Superman"
+},
+{
+"ParentID": 0,
+"CountryCodeID": 150,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 2,
+"Name": "Batman"
+},
+{
+"ParentID": 0,
+"CountryCodeID": 150,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 3,
+"Name": "Bane"
+},
+{
+"ParentID": 0,
+"CountryCodeID": 150,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 4,
+"Name": "Storm"
+},
+{
+"ParentID": 5,
+"CountryCodeID": 150,
+"Active": false,
+"CustomerNumber": "SecretCode",
+"ID": 5,
+"Name": "Cable"
+},
+{
+"ParentID": 5,
+"CountryCodeID": 74,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 6,
+"Name": "Hulk"
+},
+{
+"ParentID": 1,
+"CountryCodeID": 150,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 13,
+"Name": "Deadpool"
+},
+{
+"ParentID": 1,
+"CountryCodeID": 309,
+"Active": false,
+"CustomerNumber": "SecretCode",
+"ID": 16,
+"Name": "Spiderman"
+},
+{
+"ParentID": 1,
+"CountryCodeID": 150,
+"Active": false,
+"CustomerNumber": "SecretCode",
+"ID": 17,
+"Name": "Thor"
+},
+{
+"ParentID": 0,
+"CountryCodeID": 74,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 37,
+"Name": "Dr. Strange"
+},
+{
+"ParentID": 6,
+"CountryCodeID": 74,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 71,
+"Name": "Joker"
+},
+{
+"ParentID": 0,
+"CountryCodeID": 74,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 73,
+"Name": "Wolverine"
+},
+{
+"ParentID": 0,
+"CountryCodeID": 150,
+"Active": true,
+"CustomerNumber": "SecretCode",
+"ID": 75,
+"Name": "Roque"
+}
+]

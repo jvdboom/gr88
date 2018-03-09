@@ -17,6 +17,7 @@ export class PostsComponent implements OnInit {
   msgs: Message[] = [];
 
   public posts$: Observable<Post[]>;
+  public leftPosts: Post[];
   public editedPosts: Post[];
   public users$: Observable<Object[]>;
   public events: any[] = [];
@@ -37,6 +38,9 @@ export class PostsComponent implements OnInit {
     this.selectedPost = new Post();
     this.selectItems = [];
     this.posts$ = jsonPlaceholderService.getRows("post");
+    this.posts$.subscribe(res => {
+      this.leftPosts = res;
+    });
     this.users$ = jsonPlaceholderService.getRows("user");
     /** Find better solution. Maybe mapping oid */
     this.selectItems.push({ label: "Select Name", value: "0" });
@@ -64,12 +68,19 @@ export class PostsComponent implements OnInit {
 
   onRowClick(event: any) {
     console.log(`onRowclick: ${event}=>`, event);
+
     this.selectedPost = event.data;
     const post = event.data;
     console.log(`find ${this.editedPosts.find(pst => pst.id === post.id)}`, this.editedPosts.find(pst => pst.id === post.id));
     if (this.editedPosts.find(pst => pst.id === post.id) === undefined) {
       this.editedPosts.push(post);
     }
+    // this.dt.reset()
+
+
+    const ind = this.leftPosts.findIndex(d => d.id === post.id);
+    console.log(`id:${ind}`);
+    this.leftPosts.splice(ind, 1);
   }
 
   onEdit(event: any) {

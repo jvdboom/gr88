@@ -1,0 +1,24 @@
+<h3>{{ this.characters.attributionText }}</h3>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-accordion [activeIndex]="this.activeIndex">
+      <p-accordionTab *ngFor="let result of this.characters.data.results" header={{result?.name}}>
+        <p-accordion>
+          <p-accordionTab *ngFor="let url of result?.urls" header={{url?.type}}>
+            <div ngSwitch="{{url?.type}}">
+              <div *ngSwitchCase="'detail'" [ngClass]="'one'">
+                <a href="{{url?.url}}" target="_blank">Details about {{ result?.name }}</a>
+              </div>
+              <div *ngSwitchCase="'wiki'" [ngClass]="'two'">
+                <a href="{{url?.url}}" target="_blank">Everything you want to know about {{ result?.name }}</a>
+              </div>
+              <div *ngSwitchCase="'comiclink'" [ngClass]="'two'">
+                <a href="{{url?.url}}" target="_blank">All comics with {{ result?.name }}</a>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>

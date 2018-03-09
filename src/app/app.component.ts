@@ -41,6 +41,19 @@ export class AppComponent implements OnInit {
         icon: "fa-info",
         items: [
           { label: "TurboTable", icon: "fa-info", routerLink: ["tableturbo"] },
+          { label: "Accordion", icon: "fa-info", routerLink: ["accordion"] },
+          { label: "Validation", icon: "fa-info", routerLink: ["validation"] },
+          { label: "Pick-List", icon: "fa-info", routerLink: ["picklist"] },
+          { label: "Drag & Drop", icon: "fa-info", routerLink: ["draganddrop"] },
+        ]
+      },
+      {
+        label: "Marvel",
+        icon: "fa-comment",
+        items: [
+          { label: "Mocking", icon: "fa-info", routerLink: ["marvelmock"] },
+          { label: "Accordion", icon: "fa-info", routerLink: ["marvelaccordion"] },
+          { label: "DataView", icon: "fa-info", routerLink: ["marveldataview"] }
         ]
       },
       {
@@ -52,8 +65,10 @@ export class AppComponent implements OnInit {
           { label: "CLI", icon: "fa-wikipedia-w", url: "https://github.com/angular/angular-cli/wiki", target: "blank" },
           { label: "Tutorial", icon: "fa-wikipedia-w", url: "https://angular.io/tutorial", target: "blank" },
           { label: "Setting example", icon: "fa-wikipedia-w", url: "http://www.codemag.com/article/1801021", target: "blank" },
-          { label: "Pokedex example", icon: "fa-wikipedia-w",
-            url: "https://medium.com/the-web-tub/creating-a-pok%C3%A9mon-application-using-the-angular2-cli-53080dd9942f", target: "blank" }
+          {
+            label: "Pokedex example", icon: "fa-wikipedia-w",
+            url: "https://medium.com/the-web-tub/creating-a-pok%C3%A9mon-application-using-the-angular2-cli-53080dd9942f", target: "blank"
+          }
         ]
       }
     ];

@@ -8,8 +8,8 @@
       <p-header>
         <h3>Click on (unique) row to expand turbo table</h3>
       </p-header>
-      <p-dataTable
-      [value]="this.posts$ | async"
+      <p-dataTable #dt
+      [value]="this.leftPosts"
       [rows]="10" 
       [paginator]="(this.posts$ | async)?.length > 10 ? true : false" 
       [pageLinks]="3" 

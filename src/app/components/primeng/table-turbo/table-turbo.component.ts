@@ -57,7 +57,7 @@ export class TableTurboComponent implements OnInit {
 
   ngOnInit() {
     // this.requests$ = this.jsonPlaceholderService.getRows4TurboTable();
-    this.requests$ = this.jsonPlaceholderService.getRows4TurboTableFile();
+    this.requests$ = this.jsonPlaceholderService.getRows4TurboTableFile(`request`);
     // this.photos$.subscribe((res: any[]) => {
     //   this.totalPhotos = res.length;
     // });

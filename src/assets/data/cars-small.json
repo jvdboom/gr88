@@ -1,5 +1,4 @@
-{
-    "data": [
+[
         {"brand": "VW", "year": 2012, "color": "Orange", "vin": "dsad231ff", "active": true },
         {"brand": "Audi", "year": 2011, "color": "Black", "vin": "gwregre345", "active": false},
         {"brand": "Renault", "year": 2005, "color": "Gray", "vin": "h354htr", "active": true},
@@ -10,5 +9,5 @@
         {"brand": "Jaguar", "year": 2013, "color": "Orange", "vin": "greg34", "active": false},
         {"brand": "Ford", "year": 2000, "color": "Black", "vin": "h54hw5", "active": true},
         {"brand": "Fiat", "year": 2013, "color": "Red", "vin": "245t2s", "active": false}
-    ]
-}
+]
+

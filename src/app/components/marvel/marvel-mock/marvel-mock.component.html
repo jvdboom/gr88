@@ -1,0 +1,14 @@
+<h3>{{ this.series.attributionText }}</h3>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-accordion [activeIndex]="this.activeIndex">
+      <p-accordionTab *ngFor="let result of this.series.data.results" header={{result?.title}}>
+        <p-accordion>
+          <p-accordionTab *ngFor="let url of result.urls" header={{url?.type}}>
+            <a href="{{url?.url}}" target="_blank">Detail</a>
+          </p-accordionTab>
+        </p-accordion>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>

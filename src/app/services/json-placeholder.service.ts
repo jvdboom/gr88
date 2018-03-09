@@ -65,21 +65,21 @@ export class JsonPlaceholderService {
       .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
   }
 
-  getRows4TurboTableFile(): Observable<any[]> {
+  getRows4TurboTableFile(aFileName: string): Observable<any[]> {
     // tslint:disable-next-line:max-line-length
-    const url = `assets/data/request.json`;
+    const url = `assets/data/${aFileName}.json`;
     return this.http
       .get<any[]>(url)
       .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
   }
 
 
-//  getCarsSmall() {
-//     return this.http.get<any>("assets/data/cars-small.json")
-//         .toPromise()
-//         .then(res => <Car[]> res.data)
-//         .then(data => data);
-// }
+  //  getCarsSmall() {
+  //     return this.http.get<any>("assets/data/cars-small.json")
+  //         .toPromise()
+  //         .then(res => <Car[]> res.data)
+  //         .then(data => data);
+  // }
 
   //   /**
   //  * @param aTableName, the name of the table to get all rows from i.e. Tenant

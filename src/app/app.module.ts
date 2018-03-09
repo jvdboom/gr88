@@ -10,6 +10,7 @@ import { AppComponent } from "./app.component";
 import { AboutComponent } from "./components/about/about.component";
 
 import { MenubarModule, ButtonModule, PanelModule } from "primeng/primeng";
+import { TooltipModule } from "primeng/tooltip";
 import { SharedModule, InputTextareaModule } from "primeng/primeng";
 import { TableModule } from "primeng/table";
 import { DataTableModule } from "primeng/datatable";
@@ -21,7 +22,15 @@ import { MessagesModule } from "primeng/messages";
 import { MessageModule } from "primeng/message";
 import { MessageService } from "primeng/components/common/messageservice";
 import { ContextMenuModule } from "primeng/contextmenu";
-import {PaginatorModule} from "primeng/paginator";
+import { PaginatorModule } from "primeng/paginator";
+import { AccordionModule } from "primeng/accordion";
+import { DragDropModule } from "primeng/dragdrop";
+
+import { DataViewModule} from "primeng/dataview";
+
+// import { DataViewModule } from "primeng/components/";
+// import {DataViewModule} from "primeng/components/dataview/dataview";
+// import {DataViewModule} from "primeng/components/
 // import { MenuItem } from "primeng/api";
 
 import { ProductDetailComponent } from "./components/product-detail/product-detail.component";
@@ -46,6 +55,15 @@ import { StandardDropdownComponent } from "./shared/standard-dropdown/standard-d
 import { EditablePostTableComponent } from "./shared/editable-post-table/editable-post-table.component";
 import { KiteLyComponent } from "./components/kite-ly/kite-ly.component";
 import { TableTurboComponent } from "./components/primeng/table-turbo/table-turbo.component";
+import { AccordionComponent } from "./components/primeng/accordion/accordion.component";
+import { ValidationComponent } from "./components/primeng/validation/validation.component";
+import { MarvelMockComponent } from "./components/marvel/marvel-mock/marvel-mock.component";
+import { MarvelService } from "./services/marvel.service";
+import { DragAndDropComponent } from "./components/primeng/drag-and-drop/drag-and-drop.component";
+import { PickListComponent } from "./components/primeng/pick-list/pick-list.component";
+import { MarvelDataViewComponent } from "./components/marvel/marvel-data-view/marvel-data-view.component";
+import { MarvelAccordionComponent } from "./components/marvel/marvel-accordion/marvel-accordion.component";
+
 // import { YouTubeSearchComponent } from "./components/you-tube-search/you-tube-search.component";
 //  import { youTubeSearchInjectables } from "./you-tube-search/you-tube-search.injectables";
 
@@ -63,7 +81,14 @@ import { TableTurboComponent } from "./components/primeng/table-turbo/table-turb
     StandardDropdownComponent,
     EditablePostTableComponent,
     KiteLyComponent,
-    TableTurboComponent
+    TableTurboComponent,
+    AccordionComponent,
+    ValidationComponent,
+    MarvelMockComponent,
+    DragAndDropComponent,
+    PickListComponent,
+    MarvelDataViewComponent,
+    MarvelAccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -73,10 +98,14 @@ import { TableTurboComponent } from "./components/primeng/table-turbo/table-turb
     BrowserAnimationsModule,
     MenubarModule,
     ButtonModule,
+    TooltipModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     PaginatorModule,
+    AccordionModule,
+    DragDropModule,
+    DataViewModule,
     InputTextareaModule,
     DialogModule,
     PanelModule,
@@ -94,7 +123,7 @@ import { TableTurboComponent } from "./components/primeng/table-turbo/table-turb
   providers: [AppSettingsService, ErrorService,
     JsonPlaceholderService, CarService, PokedexService,
     GrowlService,
-    StandardService, MessageService],
+    StandardService, MessageService, MarvelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
