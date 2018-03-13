@@ -1,4 +1,48 @@
-<h3>{{ this.series.attributionText }}</h3>
+<h3>{{ (this.character$ | async)?.attributionText}}</h3>
+<!-- 
+  {{this.character$ | async | json}}
+  (this.marvels$ | async)?.data.results
+-->
+
+<!-- {{ (this.character$ | async)?.data.results[0].comics | json}}<br/> -->
+{{ (this.character$ | async)?.data.results[0].comics.available | json}}<br/>
+{{ (this.character$ | async)?.data.results[0].comics.returned | json}}<br/>
+{{ (this.character$ | async)?.data.results[0].comics.collectionURI | json}}<br/>
+<p-fieldset legend="{{(this.character$ | async)?.data.results[0].name}}" [toggleable]="true">
+    {{(this.character$ | async)?.data.results[0].description}}
+
+    <p-dataList [value]="(this.character$ | async)?.data.results[0].comics.items" [paginator]="true" [rows]="5" [totalRecords]="(this.character$ | async)?.data.results[0].comics.returned" >
+        <p-header>
+            List of Comics
+        </p-header>
+        <ng-template let-comic pTemplate="item">
+            <div class="ui-g ui-fluid comic-item">
+                <div class="ui-g-12 ui-md-3" style="text-align:center">
+                    <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png"> -->
+                </div>
+                <div class="ui-g-12 ui-md-9 comic-details">
+                    <div class="ui-g">
+                        <div class="ui-g-2 ui-sm-6">available: </div>
+                        <div class="ui-g-10 ui-sm-6">{{comic.name}}</div>
+                        
+                        <div class="ui-g-2 ui-sm-6">returned: </div>
+                        <div class="ui-g-10 ui-sm-6">{{comic.resourceURI}}</div>
+                        
+                        <!-- <div class="ui-g-2 ui-sm-6">collectionURI: </div>
+                        <div class="ui-g-10 ui-sm-6">{{comic.collectionURI}}</div> -->
+                        
+                        <!-- <div class="ui-g-2 ui-sm-6">Color: </div>
+                        <div class="ui-g-10 ui-sm-6">{{comic.color}}</div> -->
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataList>
+</p-fieldset> 
+
+
+<!--
+
 <div class="ui-g">
   <div class="ui-g-12">
     <p-accordion [activeIndex]="this.activeIndex">
@@ -6,9 +50,12 @@
         <p-accordion>
           <p-accordionTab *ngFor="let url of result.urls" header={{url?.type}}>
             <a href="{{url?.url}}" target="_blank">Detail</a>
+            <app-editable-post-table>        </app-editable-post-table>
           </p-accordionTab>
         </p-accordion>
       </p-accordionTab>
     </p-accordion>
   </div>
 </div>
+
+-->

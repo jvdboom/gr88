@@ -26,7 +26,7 @@ import { PaginatorModule } from "primeng/paginator";
 import { AccordionModule } from "primeng/accordion";
 import { DragDropModule } from "primeng/dragdrop";
 
-import { DataViewModule} from "primeng/dataview";
+import { DataViewModule } from "primeng/dataview";
 
 // import { DataViewModule } from "primeng/components/";
 // import {DataViewModule} from "primeng/components/dataview/dataview";
@@ -63,6 +63,10 @@ import { DragAndDropComponent } from "./components/primeng/drag-and-drop/drag-an
 import { PickListComponent } from "./components/primeng/pick-list/pick-list.component";
 import { MarvelDataViewComponent } from "./components/marvel/marvel-data-view/marvel-data-view.component";
 import { MarvelAccordionComponent } from "./components/marvel/marvel-accordion/marvel-accordion.component";
+import { DataViewComponent } from "./components/primeng/data-view/data-view.component";
+import { FieldsetModule } from "primeng/fieldset";
+import { DataListModule } from "primeng/datalist";
+import { PrimengMockComponent } from './components/primeng/primeng-mock/primeng-mock.component';
 
 // import { YouTubeSearchComponent } from "./components/you-tube-search/you-tube-search.component";
 //  import { youTubeSearchInjectables } from "./you-tube-search/you-tube-search.injectables";
@@ -88,7 +92,9 @@ import { MarvelAccordionComponent } from "./components/marvel/marvel-accordion/m
     DragAndDropComponent,
     PickListComponent,
     MarvelDataViewComponent,
-    MarvelAccordionComponent
+    MarvelAccordionComponent,
+    DataViewComponent,
+    PrimengMockComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +124,9 @@ import { MarvelAccordionComponent } from "./components/marvel/marvel-accordion/m
     CheckboxModule,
     GrowlModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    FieldsetModule,
+    DataListModule
   ],
   providers: [AppSettingsService, ErrorService,
     JsonPlaceholderService, CarService, PokedexService,

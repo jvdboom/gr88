@@ -17,6 +17,8 @@ import { DragAndDropComponent } from "./components/primeng/drag-and-drop/drag-an
 import { PickListComponent } from "./components/primeng/pick-list/pick-list.component";
 import { MarvelDataViewComponent } from "./components/marvel/marvel-data-view/marvel-data-view.component";
 import { MarvelAccordionComponent } from "./components/marvel/marvel-accordion/marvel-accordion.component";
+import { DataViewComponent } from "./components/primeng/data-view/data-view.component";
+import { PrimengMockComponent } from "./components/primeng/primeng-mock/primeng-mock.component";
 
 const routes: Routes = [
   { path: "about", component: AboutComponent },
@@ -29,12 +31,14 @@ const routes: Routes = [
   { path: "simplehttp", component: SimpleHttpComponent },
   { path: "kitely", component: KiteLyComponent },
   { path: "tableturbo", component: TableTurboComponent },
+  { path: "primengmock", component: PrimengMockComponent },
   { path: "picklist", component: PickListComponent },
+  { path: "dataview", component: DataViewComponent },
   { path: "accordion", component: AccordionComponent },
   { path: "draganddrop", component: DragAndDropComponent },
   { path: "validation", component: ValidationComponent },
   { path: "marvelmock", component: MarvelMockComponent },
-  { path: "marvelmock", component: MarvelMockComponent },
+  { path: "marvelmock/:id", component: MarvelMockComponent },
   { path: "marveldataview", component: MarvelDataViewComponent },
   { path: "marvelaccordion", component: MarvelAccordionComponent },
   { path: "", redirectTo: "", pathMatch: "full" },

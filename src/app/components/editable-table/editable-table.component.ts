@@ -16,9 +16,11 @@ export class EditableTableComponent implements OnInit {
   selectedCar: Car = undefined;
   checked: boolean = false;
 
+
   public comments$: Observable<Comment[]>;
   public comment: Comment = undefined;
   public selectedComment: Comment = undefined;
+  public limit = 5;
 
   constructor(private jsonPlaceholderService: JsonPlaceholderService, private carService: CarService) {
     this.comments$ = jsonPlaceholderService.getRows("comment");

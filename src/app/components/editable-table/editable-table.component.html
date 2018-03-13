@@ -14,7 +14,7 @@
         (onRowClick)="onRowClick($event)"
         (onRowSelect)="onRowSelect($event)"    
         (onRowUnselect)="onRowUnselect($event)"
-        [rows]="2"
+        [rows]="this.limit"
         [(selection)]="selectedEditableCar" 
         [editable]="true"
         [paginator]="true" 
@@ -91,7 +91,7 @@
                 selectedEditableCar: {{selectedEditableCar | json}}
             </div>
             <p-dataTable [value]="cars"     
-        [rows]="5"
+            [rows]="this.limit"
         selectionMode="single"
         [(selection)]="selectedCar" 
         [editable]="true"
@@ -129,7 +129,7 @@
                 selectionMode="single"
                 [(selection)]="selectedComment" 
                 (onRowSelect)="onRowSelect($event)"
-                [rows]="5"
+                [rows]="this.limit"
                 [editable]="true"
                 [paginator]="true" 
                 [pageLinks]="3"

@@ -40,6 +40,8 @@ export class AppComponent implements OnInit {
         label: "Primeng",
         icon: "fa-info",
         items: [
+          { label: "Mock", icon: "fa-info", routerLink: ["primengmock"] },
+          { label: "DataView", icon: "fa-info", routerLink: ["dataview"] },
           { label: "TurboTable", icon: "fa-info", routerLink: ["tableturbo"] },
           { label: "Accordion", icon: "fa-info", routerLink: ["accordion"] },
           { label: "Validation", icon: "fa-info", routerLink: ["validation"] },

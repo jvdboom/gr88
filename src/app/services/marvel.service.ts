@@ -73,8 +73,12 @@ export class MarvelService {
       .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
   }
 
+
+  // https://gateway.marvel.com:443/v1/public/characters?limit=10&offset=100&apikey=74305950cd8772223574e71ed982c578
+  // https://gateway.marvel.com:443/v1/public/characters?orderBy=name&limit=30&offset=100&apikey=74305950cd8772223574e71ed982c578
+
   getMarvel(aApi: string): Observable<Marvel> {
-    let url = `${this.baseUrl}${aApi}?apikey=${this.publicKey}`; // &ts=${timeStamp}&hash=${hash}`;
+    let url = `${this.baseUrl}${aApi}?orderBy=name&apikey=${this.publicKey}`; // &ts=${timeStamp}&hash=${hash}`;
 
     if (environment.gr88 === false) {
       /** ServerSide auth */
@@ -83,10 +87,21 @@ export class MarvelService {
       url = url + `&ts=${timeStamp}&hash=${hash}`;
       console.log(url);
     }
-    console.log(url);
-    
     return this.http
-      .get<any[]>(url)
+      .get<Marvel[]>(url)
+      .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
+  }
+
+  getMarvelDetail(aApi: string, aID: number): Observable<Marvel> {
+    let url = `${this.baseUrl}${aApi}/${aID}?apikey=${this.publicKey}`;
+    if (environment.gr88 === false) {
+      /** ServerSide auth */
+      const timeStamp = new Date().getTime();
+      const hash = Md5.init(`${timeStamp}${this.privateKey}${this.publicKey}`);
+      url = url + `&ts=${timeStamp}&hash=${hash}`;
+    }
+    return this.http
+      .get<Marvel[]>(url)
       .catch((aHttpErrorResponse: HttpErrorResponse) => this.errorService.handleError(aHttpErrorResponse));
   }
 }
