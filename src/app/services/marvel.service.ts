@@ -19,7 +19,7 @@ export class MarvelService {
   public publicKey = "74305950cd8772223574e71ed982c578";
   public baseUrl = `http://gateway.marvel.com/v1/public/`;
 
-  private privateKey = "7c764b573a1ee96e077041dea25615f7e91c145f";
+  private privateKey = "";
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
