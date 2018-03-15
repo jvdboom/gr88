@@ -11,8 +11,10 @@ export class PrimengMockComponent implements OnInit {
   selectedCars: any[] = [];
   availableCars: any[] = [];
   draggedCar: Car;
+
   car: Car;
   selectedPropertyNameElement: any;
+
 
   constructor(private jsonPlaceholderService: JsonPlaceholderService) { }
 
@@ -73,6 +75,15 @@ export class PrimengMockComponent implements OnInit {
   }
 
   onRowSelect(event: any) {
+    const car: Car = event.data;
+    console.log(`@007 onRowSelect: ${car.vin}`);
+    const index = this.selectedCars.findIndex(x => x.vin === car.vin);
+    if (index > -1) {
+      console.log(`@008 onRowSelect: ${JSON.stringify(car.vin)}:`, index);
+      // this.selectedCars = this.selectedCars.splice(index, 1, 0);
+      this.selectedCars = this.selectedCars.filter(item => item.vin !== car.vin);
+    }
+
 
   }
 

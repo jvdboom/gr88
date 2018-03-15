@@ -77,7 +77,11 @@
                 (onEditInit)="onEditInit($event)"
                 (onRowClick)="onRowClick($event)"
                 (onEdit)="onEdit($event)">
-                <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
+                <p-column [style]="{'width':'38px'}" selectionMode="single">
+                    <!-- <ng-template  pTemplate="body">
+                        <i class="fa-trash-o"></i>
+                    </ng-template> -->
+                </p-column>
                 <p-column field="vin" header="Vin" [editable]="true"></p-column>
                 <p-column field="year" header="Year" [editable]="true"></p-column>
                 <p-column field="color" header="Color" [editable]="true"></p-column>

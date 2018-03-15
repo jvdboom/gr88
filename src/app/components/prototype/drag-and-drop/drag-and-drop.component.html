@@ -1,0 +1,80 @@
+<p-panel>
+  <p-header>
+      <div class="ui-g-12">
+          <div class="ui-g-4">
+              <a pTooltip="akopkokhyants" href="https://twitter.com/akopkokhyants" target="_blank">Thanks To!</a>
+          </div>
+          <div class="ui-g-4">
+              <a href="https://www.npmjs.com/package/ng2-dnd" target="_blank">NPM</a>
+          </div>
+          <div class="ui-g-4">
+              <a href="http://embed.plnkr.co/JbG8Si" target="_blank">Demo</a>
+          </div>
+      </div>
+  </p-header>
+  <div class="ui-g-12">
+    <div class="row">
+      <div class="ui-g-4">
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            Available boxers
+          </div>
+          <div class="panel-body" dnd-sortable-container (click)="click1($event)" [dropZones]="['boxers-zone']" [sortableData]="listBoxers">
+            <ul class="list-group" (click)="click2($event)">
+              <li *ngFor="let item of listBoxers; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i" (click)="click3($event,item)">{{item}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            First Team
+          </div>
+          <div class="panel-body" dnd-sortable-container (click)="click1a($event)" [dropZones]="['boxers-zone']" [sortableData]="this.listTeamOne">
+            <ul class="list-group" (click)="click2a($event)">
+              <li *ngFor="let item of listTeamOne; let i = index" class="list-group-item" 
+              dnd-sortable [sortableIndex]="i" (dblclick)="onRowDblClick($event, item)">
+              <input id="input" type="text" size="30" pInputText [(ngModel)]="listTeamOne[i]"> 
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            Second Team
+          </div>
+          <div class="panel-body" dnd-sortable-container (click)="click1b($event)" [dropZones]="['boxers-zone']" [sortableData]="this.listTeamTwo">
+            <ul class="list-group" (click)="click2b($event)">
+              <li *ngFor="let item of listTeamTwo; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i" (click)="click3b($event,item)">{{item}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    Master end
+  </p-footer>
+</p-panel>
+
+
+
+<!-- Detail ####################################################################### -->
+
+<!--   
+  <div class="ui-g-6">
+    <p-panel>
+      <p-header>
+        Detail begin
+      </p-header>
+      <div class="ui-g">
+      </div>
+      <p-footer>
+        Detail end
+      </p-footer>
+    </p-panel>
+  </div>
+-->
