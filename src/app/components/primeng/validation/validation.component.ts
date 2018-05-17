@@ -39,6 +39,9 @@ export class ValidationComponent implements OnInit {
   }
 
   onSubmit(value: string) {
+    console.log(value);
+
+    
     this.submitted = true;
     this.msgs = [];
     this.msgs.push({ severity: "info", summary: "Success", detail: "Form Submitted" });

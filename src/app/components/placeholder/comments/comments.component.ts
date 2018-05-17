@@ -87,12 +87,13 @@ export class CommentsComponent implements OnInit {
       .subscribe(data => this.subcribeToFormChanges(data));
   }
 
-  onclick(){
+  onclick() {
     this.testing = "hallooo";
   }
 
   subcribeToFormChanges(data?: any): void {
     // Use this for debugging
+    this.events = [];
     const myFormStatusChanges$ = this.baseForm.statusChanges;
     const myFormValueChanges$ = this.baseForm.valueChanges;
 

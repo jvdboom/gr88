@@ -79,7 +79,9 @@
             <div style="text-align:center;margin-top:20px" *ngIf="submitted">
                 Form Submitted
                 <br>
-                {{diagnostic}}
+                diagnostic: {{diagnostic}}
+                <br>
+                this.tenant: {{this.tenant | json}}
             </div>
         </div>
     </p-panel>
