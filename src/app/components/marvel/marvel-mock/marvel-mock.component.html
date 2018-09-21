@@ -5,9 +5,12 @@
 -->
 
 <!-- {{ (this.character$ | async)?.data.results[0].comics | json}}<br/> -->
+<!-- 
 {{ (this.character$ | async)?.data.results[0].comics.available | json}}<br/>
 {{ (this.character$ | async)?.data.results[0].comics.returned | json}}<br/>
 {{ (this.character$ | async)?.data.results[0].comics.collectionURI | json}}<br/>
+ -->
+
 <p-fieldset legend="{{(this.character$ | async)?.data.results[0].name}}" [toggleable]="true">
     {{(this.character$ | async)?.data.results[0].description}}
 

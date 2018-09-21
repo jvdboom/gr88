@@ -19,9 +19,9 @@
           <div class="panel-heading">
             Available boxers
           </div>
-          <div class="panel-body" dnd-sortable-container (click)="click1($event)" [dropZones]="['boxers-zone']" [sortableData]="listBoxers">
+          <div class="panel-body" dnd-sortable-container (click)="click1($event)" [dropZones]="['boxers-zone']" [sortableData]="listCharacters">
             <ul class="list-group" (click)="click2($event)">
-              <li *ngFor="let item of listBoxers; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i" (click)="click3($event,item)">{{item}}</li>
+              <li *ngFor="let item of listCharacters; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i" (click)="click3($event,item)">{{item}}</li>
             </ul>
           </div>
         </div>
@@ -35,7 +35,11 @@
             <ul class="list-group" (click)="click2a($event)">
               <li *ngFor="let item of listTeamOne; let i = index" class="list-group-item" 
               dnd-sortable [sortableIndex]="i" (dblclick)="onRowDblClick($event, item)">
-              <input id="input" type="text" size="30" pInputText [(ngModel)]="listTeamOne[i]"> 
+              <input id="input1" type="text" size="30" pInputText [(ngModel)]="listTeamOne[i]"> 
+              <input id="input2" pInputText [(ngModel)]="listTeamOne[i]"> 
+              <input id="input2" [(ngModel)]="listTeamOne[i]"> 
+              <input id="input3" placeholder="{{listTeamOne[i]}}"> 
+              <button pButton type="button" icon="fa-trash" iconPos="left"></button>
             </li>
             </ul>
           </div>
@@ -48,11 +52,47 @@
           </div>
           <div class="panel-body" dnd-sortable-container (click)="click1b($event)" [dropZones]="['boxers-zone']" [sortableData]="this.listTeamTwo">
             <ul class="list-group" (click)="click2b($event)">
-              <li *ngFor="let item of listTeamTwo; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i" (click)="click3b($event,item)">{{item}}</li>
+              <li *ngFor="let item of listTeamTwo; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i" (click)="click3b($event,item)">
+                  <p-dropdown [options]="this.optionsCharacters" [(ngModel)]="listTeamTwo[i]" ></p-dropdown>
+                  <button pButton type="button" icon="fa-trash" iconPos="right" (click)="delete1($event, listTeamTwo[i])" pTooltip="Delete {{ listTeamTwo[i] }}"></button>
+              </li>
             </ul>
           </div>
         </div>
       </div>
+      <div class="ui-g-4">
+        <div class="ui-g-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              Fourth Team
+            </div>
+            <section class="main" *ngIf="this.listTeamTwo.length > 0">
+            <ul class="todo-list" dnd-sortable-container [sortableData]="this.listTeamTwo">
+              <li *ngFor="let todo of this.listTeamTwo; let i = index" class="todo-item" [class.completed]="todo.complete" 
+              dnd-sortable [sortableIndex]="i" [dragEnabled]="true" [dragData]="todo"
+              dnd-droppable (onDropSuccess)="onMove($event, i)">
+                <div class="view">
+                  <span class="handle" dnd-sortable-handle>=</span>
+                  <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+                  <label>{{todo.title}}</label>
+                  <button class="destroy" (click)="removeTodo(todo)"></button>
+                </div>
+                <div>
+                  <input class="new-todo">
+                </div>
+              </li>
+            </ul>
+            </section>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-g-4">
+        <!-- {{ this.characters | json }} -->
+      </div>
+
     </div>
   </div>
   <p-footer>

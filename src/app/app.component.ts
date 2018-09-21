@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
         label: "Prototype",
         icon: "fa-comment",
         items: [
+          { label: "Drag and Drop Items", icon: "fa-info", routerLink: ["draganddropitems"] },
           { label: "Drag and Drop", icon: "fa-info", routerLink: ["prototypedraganddrop"] },
         ]
       },

@@ -1,4 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { MarvelService } from "../../../services/marvel.service";
+import { Observable } from "rxjs/Observable";
+import { Marvel } from "../../../models/marvel";
+import { Character } from "../../../models/character";
+import { SelectItem } from "primeng/api";
 
 @Component({
   selector: "app-drag-and-drop",
@@ -7,12 +12,31 @@ import { Component, OnInit } from "@angular/core";
 })
 export class DragAndDropComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
-  listBoxers: Array<string> = ["Sugar Ray Robinson", "Muhammad Ali", "George Foreman", "Joe Frazier", "Jake LaMotta", "Joe Louis", "Jack Dempsey", "Rocky Marciano", "Mike Tyson", "Oscar De La Hoya"];
+  public listCharacters: Array<string> = [];
+  public optionsCharacters: SelectItem[] = [];
+
+
   listTeamOne: Array<string> = [];
   listTeamTwo: Array<string> = [];
   item: any;
 
-  constructor() { }
+  public characters$: Observable<Character[]>;
+  // public character: Character[];
+  // public characters: any;
+
+  private sub: any;
+  private id: number;
+
+  constructor(private marvelService: MarvelService) {
+    this.marvelService.getMarvelBasic(`characters`)
+      .subscribe((characters: Character) => {
+        this.optionsCharacters.push({ label: "Select Character", value: undefined });
+        characters.data.results.forEach(character => {
+          this.listCharacters.push(character.name);
+          this.optionsCharacters.push({ label: character.name, value: character.name });
+        });
+      });
+  }
 
   ngOnInit() {
   }
@@ -43,23 +67,31 @@ export class DragAndDropComponent implements OnInit {
   }
   click3a(event: any, item: any) {
     this.listTeamOne = this.listTeamOne.filter(x => x !== item);
-    this.listBoxers = [...this.listBoxers, item];
+    this.listCharacters = [...this.listCharacters, item];
     console.log(`click3a:${JSON.stringify(event)}`);
     console.log(`click3a:${JSON.stringify(item)}`);
   }
 
   onRowDblClick(event: any, item: any) {
     this.listTeamOne = this.listTeamOne.filter(x => x !== item);
-    this.listBoxers = [...this.listBoxers, item];
+    this.listCharacters = [...this.listCharacters, item];
     console.log(`click3a:${JSON.stringify(event)}`);
     console.log(`click3a:${JSON.stringify(item)}`);
   }
 
   click3b(event: any, item: any) {
-    this.listTeamTwo = this.listTeamTwo.filter(x => x !== item);
-    this.listBoxers = [...this.listBoxers, item];
+    // this.listTeamTwo = this.listTeamTwo.filter(x => x !== item);
+    // this.listCharacters = [...this.listCharacters, item];
     console.log(`click3b:${JSON.stringify(event)}`);
     console.log(`click3b:${JSON.stringify(item)}`);
+  }
+
+  delete1(event: any, aCharacter: string) {
+    console.log(`delete1:${JSON.stringify(event)} `, aCharacter);
+  }
+
+  onMove(event: any, aNumber: number) {
+    console.log(`onMove:${JSON.stringify(event)} `, event);
   }
 
 }

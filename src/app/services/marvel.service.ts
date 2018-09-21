@@ -5,6 +5,7 @@ import { ErrorService } from "./error.service";
 import { Md5 } from "md5-typescript";
 import { environment } from "../../environments/environment";
 import { Marvel } from "../models/marvel";
+import { Character } from "../models/character";
 
 
 @Injectable()
@@ -19,7 +20,7 @@ export class MarvelService {
   public publicKey = "74305950cd8772223574e71ed982c578";
   public baseUrl = `http://gateway.marvel.com/v1/public/`;
 
-  private privateKey = "";
+  private privateKey = "7c764b573a1ee96e077041dea25615f7e91c145f";
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
@@ -58,7 +59,7 @@ export class MarvelService {
   }
 
 
-  getMarvelBasic(aData: string): Observable<any[]> {
+  getMarvelBasic(aData: string): Observable<any> {
     let url = `${this.baseUrl}${aData}?apikey=${this.publicKey}`; // &ts=${timeStamp}&hash=${hash}`;
 
     if (environment.gr88 === false) {

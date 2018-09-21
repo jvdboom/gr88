@@ -19,16 +19,11 @@ export class MarvelMockComponent implements OnInit {
   constructor(private jsonPlaceholderService: JsonPlaceholderService,
     private marvelService: MarvelService,
     private route: ActivatedRoute) {
-    // this.comments$ = jsonPlaceholderService.getRows("comment");
-    // this.series$ = marvelService.getMarvelBasic(`series`);
-    // this.series$.subscribe(response => {
-    //   this.series = response;
-    //   this.seriesData = JSON.stringify(response);
-    // });
-    // this.series$ = marvelService.getHeroes();
-
     this.sub = this.route.params.subscribe(params => {
       this.id = +params["id"];
+      if (!this.id) {
+        this.id = 1011334;
+      }
       this.character$ = marvelService.getMarvelDetail(`characters`, this.id);
     });
 

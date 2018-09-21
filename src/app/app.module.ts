@@ -69,9 +69,11 @@ import { DataListModule } from "primeng/datalist";
 import { PrimengMockComponent } from "./components/primeng/primeng-mock/primeng-mock.component";
 import { DragAndDropComponent as PrototypeDragAndDropComponent } from "./components/prototype/drag-and-drop/drag-and-drop.component";
 import { DndModule } from "ng2-dnd";
+// import { dndLists } from "angular-drag-and-drop-lists-custom";
 
+import { DragAndDropItemsComponent } from "./components/prototype/drag-and-drop-items/drag-and-drop-items.component";
 // import { YouTubeSearchComponent } from "./components/you-tube-search/you-tube-search.component";
-//  import { youTubeSearchInjectables } from "./you-tube-search/you-tube-search.injectables";
+// import { youTubeSearchInjectables } from "./you-tube-search/you-tube-search.injectables";
 
 @NgModule({
   declarations: [
@@ -97,7 +99,8 @@ import { DndModule } from "ng2-dnd";
     MarvelDataViewComponent,
     MarvelAccordionComponent,
     DataViewComponent,
-    PrimengMockComponent
+    PrimengMockComponent,
+    DragAndDropItemsComponent
   ],
   imports: [
     BrowserModule,

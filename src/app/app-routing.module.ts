@@ -20,6 +20,7 @@ import { MarvelAccordionComponent } from "./components/marvel/marvel-accordion/m
 import { DataViewComponent } from "./components/primeng/data-view/data-view.component";
 import { PrimengMockComponent } from "./components/primeng/primeng-mock/primeng-mock.component";
 import { DragAndDropComponent as PrototypeDragAndDropComponent } from "./components/prototype/drag-and-drop/drag-and-drop.component";
+import { DragAndDropItemsComponent } from "./components/prototype/drag-and-drop-items/drag-and-drop-items.component";
 
 const routes: Routes = [
   { path: "about", component: AboutComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: "marveldataview", component: MarvelDataViewComponent },
   { path: "marvelaccordion", component: MarvelAccordionComponent },
   { path: "prototypedraganddrop", component: PrototypeDragAndDropComponent },
+  { path: "draganddropitems", component: DragAndDropItemsComponent },
   { path: "", redirectTo: "", pathMatch: "full" },
   { path: "**", redirectTo: "" }
 ];
